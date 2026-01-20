@@ -63,6 +63,11 @@ elmo-hikes/
 ## Contributors
 
 - **Sam** - BCIT CST Student with a passion for staying indoors. Fun fact: Loves baseball.
+- Darien - BCIT CST Student with a passion for outdoor adventures and user-friendly applications. Fun fact: Loves solving Rubik's Cubes in under a minute.
+- x - BCIT CST Student, Frontend enthusiast with a knack for creative design. Fun fact: Has a collection of over 50 houseplants.
+
+
+- Chris Banno - BCIT CST Student with a passion for outdoor adventures and user-friendly applications. Fun fact: Loves snowboarding and working on cars.
 - **Teammate Name** - BCIT CST Student, Frontend enthusiast with a knack for creative design. Fun fact: Has a collection of over 50 houseplants.
 
 ---
