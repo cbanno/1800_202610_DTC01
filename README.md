@@ -30,16 +30,16 @@ Developed for the COMP 1800 course, this project applies User-Centred Design pra
 
 To run the application locally:
 
-1.  **Clone** the repository.
-2.  **Install dependencies** by running `npm install` in the project root directory.
-3.  **Start the development server** by running the command: `npm run dev`.
-4.  Open your browser and visit the local address shown in your terminal (usually `http://localhost:5173` or similar).
+1. **Clone** the repository.
+2. **Install dependencies** by running `npm install` in the project root directory.
+3. **Start the development server** by running the command: `npm run dev`.
+4. Open your browser and visit the local address shown in your terminal (usually `http://localhost:5173` or similar).
 
 Once the application is running:
 
-1.  Browse the list of hiking trails displayed on the main page.
-2.  Click the heart icon (or similar) to mark a trail as a favorite.
-3.  View your favorite hikes in the favorites section.
+1. Browse the list of hiking trails displayed on the main page.
+2. Click the heart icon (or similar) to mark a trail as a favorite.
+3. View your favorite hikes in the favorites section.
 
 ---
 
@@ -61,6 +61,8 @@ elmo-hikes/
 ---
 
 ## Contributors
+
+- **Sam** - BCIT CST Student with a passion for staying indoors. Fun fact: Loves baseball.
 - Darien - BCIT CST Student with a passion for outdoor adventures and user-friendly applications. Fun fact: Loves solving Rubik's Cubes in under a minute.
 - x - BCIT CST Student, Frontend enthusiast with a knack for creative design. Fun fact: Has a collection of over 50 houseplants.
 
