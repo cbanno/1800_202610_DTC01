@@ -1,40 +1,43 @@
 .nav-item input {
-    border-radius: 10px;
-    /* margin-left: 60%; */
-    /* align-self: right; */
-    /* float:right; */
+  border-radius: 10px;
+  /* margin-left: 60%; */
+  /* align-self: right; */
+  /* float:right; */
 }
 
 .nav-item img {
-    padding:0px;
-    cursor:pointer;
+  padding: 0px;
+  cursor: pointer;
 }
 
 .search {
-    display:flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .navlogo {
-    display:flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
-.navlogo h4{
-    visibility: visible;
-    margin-top: 10px;
-    font-size: 30px;
+.navlogo h4 {
+  visibility: visible;
+  margin-top: 10px;
+  font-size: 30px;
 }
 
+.card-image {
+  max-height: 100px;
+}
 
 @media (max-width: 500px) {
-    .navlogo h4{
-        visibility: hidden;
-        size: 0px;
-        margin:0;
-        width: 28px;
-    }
-    .navlogo {
-        width:40px;
-    }
+  .navlogo h4 {
+    visibility: hidden;
+    size: 0px;
+    margin: 0;
+    width: 28px;
+  }
+  .navlogo {
+    width: 40px;
+  }
 }
