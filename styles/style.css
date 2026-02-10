@@ -30,6 +30,10 @@
   max-height: 100px;
 }
 
+.form-check {
+    padding-left: 15%;
+}
+
 @media (max-width: 500px) {
   .navlogo h4 {
     visibility: hidden;
