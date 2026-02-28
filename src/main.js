@@ -10,10 +10,7 @@ function showDashboard() {
   onAuthReady((user) => {
     if (!user) {
       // If no user is signed in → redirect back to login page.
-
-      // sjmy: This line causes index.html to constantly load itself (the bug from lecture demo 07)
-      // Not sure if this is needed for authentication
-      // location.href = "index.html";
+      location.href = "index.html";
       return;
     }
 

@@ -11,6 +11,11 @@
     <!-- Web Components for shared navbar and footer layout -->
     <script type="module" src="/src/components/site-navbar.js"></script>
     <script type="module" src="/src/components/site-footer.js"></script>
+    <script
+      type="module"
+      src="/src/components/site-party-list-item.js"
+    ></script>
+    <script type="module" src="/src/components/site-login-button.js"></script>
 
     <!-- Other libraries go here -->
   </head>
@@ -24,6 +29,21 @@
     <site-navbar></site-navbar>
 
     <!-- Stuff for body goes here -->
+    <main class="p-2">
+      <div class="container-fluid bg-light text-dark p-5">
+        <div class="container bg-light p-5">
+          <h1 class="display-4">
+            Good morning, <span id="name-goes-here"></span>
+          </h1>
+        </div>
+      </div>
+
+      <site-party-list-item></site-party-list-item>
+      <site-party-list-item></site-party-list-item>
+      <site-party-list-item></site-party-list-item>
+
+      <site-login-button></site-login-button>
+    </main>
 
     <!-- footer goes here -->
     <site-footer></site-footer>
