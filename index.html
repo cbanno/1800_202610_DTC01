@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <title>Landing Page</title>
@@ -8,6 +8,15 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+    <!-- Web Components (src/components) -->
+    <script type="module" src="/src/components/site-navbar.js"></script>
+    <script type="module" src="/src/components/site-footer.js"></script>
+    <script
+      type="module"
+      src="/src/components/site-party-list-item.js"
+    ></script>
+    <script type="module" src="/src/components/site-login-button.js"></script>
+
     <!-- Other libraries go here -->
   </head>
 
@@ -15,165 +24,21 @@
     <!------------------------------>
     <!-- Your HTML Layout go here -->
     <!------------------------------>
+
+    <!-- navbar goes here -->
+    <site-navbar></site-navbar>
+
     <!-- Stuff for body goes here -->
-    <nav class="navbar navbar-expand-lg bg-warning">
-      <div class="container-fluid">
-        <div class="navlogo">
-            <a class="navbar-brand" href="#">
-            <img src="images/logo.jpg" height="36" />
-            </a>
-            <h4>World Watch</h4>
-        </div>
-
-          <ul class="navbar-nav">
-            <div class="search">
-                <li class="nav-item">
-                    <input placeholder="Search...">
-                </li>
-                <li class="nav-item">
-                    <div class="dropstart">
-                      <button class="btn btn-secondary bg-danger" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
-                      <img class="nav-link" href="#" src="images/filter.png" height="30px" onclick="">
-                      </button>
-                      <ul class="dropdown-menu">
-                        <form action="" target="_self">
-                        <li>
-                          <div class="mb-3">
-                            <div class="form-check">
-                              <input type="checkbox" class="form-check-input" id="Country1">
-                              <label class="form-check-label" for="Country1">Flag</label>
-                            </div>
-                          </div>        
-                        </li>
-                        <li>
-                          <div class="mb-3">
-                            <div class="form-check">
-                              <input type="checkbox" class="form-check-input" id="Country2">
-                              <label class="form-check-label" for="Country2">Flag</label>
-                            </div>
-                          </div>        
-                        </li>
-                        <li>
-                          <div class="mb-3">
-                            <div class="form-check">
-                              <input type="checkbox" class="form-check-input" id="Country3">
-                              <label class="form-check-label" for="Country3">Flag</label>
-                            </div>
-                          </div>
-                        </li>
-                        <li>
-                          <div class="mb-3">
-                            <div class="form-check">
-                              <input type="checkbox" class="form-check-input" id="Country4">
-                              <label class="form-check-label" for="Country4">Flag</label>
-                            </div>
-                          </div>
-                        </li>
-                        <li>
-                          <div class="mb-3">
-                            <div class="form-check">
-                              <input type="checkbox" class="form-check-input" id="Country5">
-                              <label class="form-check-label" for="Country5">Flag</label>
-                            </div>
-                          </div>        
-                        </li>
-                        <li>
-                          <div class="mb-3">
-                            <div class="form-check">
-                              <input type="checkbox" class="form-check-input" id="Country6">
-                              <label class="form-check-label" for="Country6">Flag</label>
-                            </div>
-                          </div>        
-                        </li>
-                        <li>
-                          <div class="mb-3">
-                            <div class="form-check">
-                              <input type="checkbox" class="form-check-input" id="Country6">
-                              <label class="form-check-label" for="Country6">Flag</label>
-                            </div>
-                          </div>
-                        </li>
-                        <li>
-                          <div class="mb-3">
-                            <div class="form-check">
-                              <input type="checkbox" class="form-check-input" id="Country7">
-                              <label class="form-check-label" for="Country7">Flag</label>
-                            </div>
-                          </div>
-                        </li>
-                        <div class="d-grid p-3 gap-2 d-md-flex justify-content-md-end">
-                          <button class="btn btn-primary me-md-2" type="reset">Clear</button>
-                          <button class="btn btn-primary" type="submit">Confirm</button>
-                        </div>
-                        </form>
-                      </ul>
-                    </div>
-                </li>
-            </div>
-          </ul>
-        </divid=>
-      </div>
-    </nav>
-
     <main class="p-2">
-      <div class="card mb-3">
-        <div class="card-body d-flex justify-content-between">
-          <div class="d-flex flex-column">
-            <span>Venue Name</span>
-            <span>555 Main St.</span>
-            <span>Vancouver, BC</span>
-            <br>
-            <span>17.4 km away</span>
-          </div>
-          <div class="d-flex justify-content-center align-items-center">
-            <span>TEAM VS. TEAM</span>
-          </div>
-          <div class="d-flex justify-content-center align-items-center">
-            <div class="border border-dark-subtle">
-              <img src="images/sadia-afreen-0ff2wEWSeTA-unsplash.jpg" class="card-image">
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="card mb-3">
-        <div class="card-body d-flex justify-content-between">
-          <div class="d-flex flex-column">
-            <span>Venue Name</span>
-            <span>555 Main St.</span>
-            <span>Vancouver, BC</span>
-            <br>
-            <span>17.4 km away</span>
-          </div>
-          <div class="d-flex justify-content-center align-items-center">
-            <span>TEAM VS. TEAM</span>
-          </div>
-          <div class="d-flex justify-content-center align-items-center">
-            <div class="border border-dark-subtle">
-              <img src="images/sadia-afreen-0ff2wEWSeTA-unsplash.jpg" class="card-image">
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="card mb-3">
-        <div class="card-body d-flex justify-content-between">
-          <div class="d-flex flex-column">
-            <span>Venue Name</span>
-            <span>555 Main St.</span>
-            <span>Vancouver, BC</span>
-            <br>
-            <span>17.4 km away</span>
-          </div>
-          <div class="d-flex justify-content-center align-items-center">
-            <span>TEAM VS. TEAM</span>
-          </div>
-          <div class="d-flex justify-content-center align-items-center">
-            <div class="border border-dark-subtle">
-              <img src="images/sadia-afreen-0ff2wEWSeTA-unsplash.jpg" class="card-image">
-            </div>
-          </div>
-        </div>
-      </div>
+      <site-party-list-item></site-party-list-item>
+      <site-party-list-item></site-party-list-item>
+      <site-party-list-item></site-party-list-item>
+
+      <site-login-button></site-login-button>
     </main>
+
+    <!-- footer goes here -->
+    <site-footer></site-footer>
 
     <!---------------------------------------------->
     <!-- Your own JavaScript functions go here    -->

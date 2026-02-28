@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <title>main</title>
@@ -8,6 +8,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+    <!-- Web Components for shared navbar and footer layout -->
+    <script type="module" src="/src/components/site-navbar.js"></script>
+    <script type="module" src="/src/components/site-footer.js"></script>
+
     <!-- Other libraries go here -->
   </head>
 
@@ -15,8 +19,14 @@
     <!------------------------------>
     <!-- Your HTML Layout go here -->
     <!------------------------------>
+
+    <!-- navbar goes here -->
+    <site-navbar></site-navbar>
+
     <!-- Stuff for body goes here -->
-    
+
+    <!-- footer goes here -->
+    <site-footer></site-footer>
 
     <!---------------------------------------------->
     <!-- Your own JavaScript functions go here    -->
