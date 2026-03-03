@@ -13,9 +13,31 @@ class SiteFooter extends HTMLElement {
   renderFooter() {
     this.innerHTML = `
             <!-- Footer: single source of truth -->
-            <footer class="py-3 my-4 border-top text-center">
-                
-            </footer>
+            <nav class="navbar fixed-bottom bg-warning">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">
+                <img src="images/home-sprite.png" height="36" />
+              </a>
+              <a class="navbar-brand" href="#">
+                <img src="images/list-sprite.png" height="36" />
+              </a>
+              <a class="navbar-brand" href="#">
+                <img src="images/plus-sprite.png" height="36" />
+              </a>
+              <a class="navbar-brand" href="#">
+                <img src="images/map-sprite.png" height="36" />
+              </a>
+              <div class="btn-group dropstart dropup">
+                <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropstart
+                </button>
+                <ul class="dropdown-menu">
+                  <!-- Dropdown menu links -->
+                  <site-login-button></site-login-button>
+                </ul>
+              </div>
+            </div>
+            </nav>
         `;
   }
 
