@@ -13,7 +13,7 @@ class SiteFooter extends HTMLElement {
   renderFooter() {
     this.innerHTML = `
             <!-- Footer: single source of truth -->
-            <nav class="navbar fixed-bottom bg-warning">
+          <nav class="navbar fixed-bottom bg-warning">
             <div class="container-fluid">
               <a class="navbar-brand" href="main.html">
                 <img src="images/home-sprite.png" height="36" />
@@ -33,15 +33,15 @@ class SiteFooter extends HTMLElement {
                   <img src="images/hamburger-sprite.png" height="36" />
                 </button>
 
-                <ul class="dropdown-menu dropdown-menu-end">
+                <ul class="dropdown-menu dropdown-menu-end" style="min-width: 365px ">
                   <!-- Dropdown menu links -->
                     <li><button class="dropdown-item" type="button">Settings</button></li>
                     <li><button class="dropdown-item" type="button">About Us</button></li>
                     <li><button class="dropdown-item" type="button">FAQ</button></li>
                   <site-login-button></site-login-button>
                 </ul>
-            </div>
-            </nav>
+              </div>
+          </nav>
         `;
   }
 
