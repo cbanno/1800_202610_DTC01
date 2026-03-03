@@ -27,15 +27,17 @@ class SiteFooter extends HTMLElement {
               <a class="navbar-brand" href="#">
                 <img src="images/map-sprite.png" height="36" />
               </a>
-              <div class="btn-group dropstart dropup">
-                <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                  Dropstart
+              <div class="btn-group dropup dropup-left">
+                <button type="button" class="btn" data-bs-toggle="dropdown" aria-expanded="false">
+                  <img src="images/hamburger-sprite.png" height="36" />
                 </button>
-                <ul class="dropdown-menu">
+                <ul class="dropdown-menu dropdown-menu-end">
                   <!-- Dropdown menu links -->
+                    <li><button class="dropdown-item" type="button">Settings</button></li>
+                    <li><button class="dropdown-item" type="button">About Us</button></li>
+                    <li><button class="dropdown-item" type="button">FAQ</button></li>
                   <site-login-button></site-login-button>
                 </ul>
-              </div>
             </div>
             </nav>
         `;
