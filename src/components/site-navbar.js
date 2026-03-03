@@ -23,6 +23,7 @@ class SiteNavbar extends HTMLElement {
                 </div>
 
                 <ul class="navbar-nav">
+                    <a href="account.html"><img src="../../images/profile.png" height="50px" width="50px"></a>
                     <div class="search">
                         <li class="nav-item">
                             <input placeholder="Search...">
