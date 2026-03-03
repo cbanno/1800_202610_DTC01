@@ -15,10 +15,10 @@ class SiteFooter extends HTMLElement {
             <!-- Footer: single source of truth -->
             <nav class="navbar fixed-bottom bg-warning">
             <div class="container-fluid">
-              <a class="navbar-brand" href="#">
+              <a class="navbar-brand" href="main.html">
                 <img src="images/home-sprite.png" height="36" />
               </a>
-              <a class="navbar-brand" href="#">
+              <a class="navbar-brand" href="index.html">
                 <img src="images/list-sprite.png" height="36" />
               </a>
               <a class="navbar-brand" href="#">
@@ -27,10 +27,12 @@ class SiteFooter extends HTMLElement {
               <a class="navbar-brand" href="#">
                 <img src="images/map-sprite.png" height="36" />
               </a>
+
               <div class="btn-group dropup dropup-left">
                 <button type="button" class="btn" data-bs-toggle="dropdown" aria-expanded="false">
                   <img src="images/hamburger-sprite.png" height="36" />
                 </button>
+
                 <ul class="dropdown-menu dropdown-menu-end">
                   <!-- Dropdown menu links -->
                     <li><button class="dropdown-item" type="button">Settings</button></li>
