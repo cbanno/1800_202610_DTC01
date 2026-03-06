@@ -15,6 +15,7 @@ function showName() {
   // Get the DOM element where the user's name will be displayed
   // Example: <h1 id="name-goes-here"></h1>
   const nameElement = document.getElementById("name-goes-here");
+  const accountElement = document.getElementById("account-goes-here");
 
   // Wait until Firebase Auth finishes checking the user's auth state
   onAuthReady(async (user) => {
@@ -36,34 +37,13 @@ function showName() {
     // If the DOM element exists, update its text using a template literal to add "!"
     if (nameElement) {
       nameElement.textContent = `${name}`;
+      accountElement.innerHTML = `E-mail: ${user.email} </br> Country: ${userDoc.data().country} </br> School: ${userDoc.data().school}`;
     }
   });
 }
 
 showName();
 
-function readQuote(day) {
-  const quoteDocRef = doc(db, "quotes", day); // Get a reference to the document
-
-  onSnapshot(
-    quoteDocRef,
-    (docSnap) => {
-      // Listen for real-time updates
-      if (docSnap.exists()) {
-        //Document existence check
-        document.getElementById("quote-goes-here").innerHTML =
-          docSnap.data().quote;
-      } else {
-        console.log("No such document!");
-      }
-    },
-    (error) => {
-      //Listener/system error
-      console.error("Error listening to document: ", error);
-    }
-  );
-}
-readQuote("tuesday");
 
 // -----------------Watch party:database------------------------------------------------------
 function addWatchPartyData() {
