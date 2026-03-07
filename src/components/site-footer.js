@@ -38,7 +38,7 @@ class SiteFooter extends HTMLElement {
                     <li><button class="dropdown-item" type="button">Settings</button></li>
                     <li><button class="dropdown-item" type="button">About Us</button></li>
                     <li><button class="dropdown-item" type="button">FAQ</button></li>
-                  <site-login-button></site-login-button>
+                    <div class="p-2"><site-login-button></site-login-button></div>
                 </ul>
               </div>
           </nav>

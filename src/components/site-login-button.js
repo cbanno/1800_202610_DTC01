@@ -34,13 +34,7 @@ class SiteLoginButton extends HTMLElement {
         const signOutBtn = authControls.querySelector("#signOutBtn");
         signOutBtn?.addEventListener("click", logoutUser);
       } else {
-        updatedAuthControl = `<button
-              onclick="window.location.href = 'login.html'"
-              type="button"
-              class="btn btn-success btn-lg"
-            >
-              Login/Signup
-            </button><a class="btn btn-outline-dark" id="loginBtn" href="/login.html" style="min-width: 80px;">Log in</a>`;
+        updatedAuthControl = `<a class="btn btn-outline-dark" id="loginBtn" href="/login.html" style="min-width: 80px;">Login/Signup</a>`;
         authControls.innerHTML = updatedAuthControl;
       }
     });
