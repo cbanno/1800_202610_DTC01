@@ -10,9 +10,18 @@
   cursor: pointer;
 }
 
-.search {
+.nav-item.search {
   display: flex;
-  flex-direction: row;
+  align-items: center;
+}
+
+.nav-item.filter {
+  display: flex;
+  align-items: center;
+}
+
+.dropstart {
+  max-width: fit-content;
 }
 
 .navlogo {
@@ -26,15 +35,20 @@
   font-size: 30px;
 }
 
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
 .card-image {
   max-height: 100px;
 }
 
 .form-check {
-    padding-left: 15%;
+  padding-left: 15%;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 768px) {
   .navlogo h4 {
     visibility: hidden;
     size: 0px;
@@ -43,5 +57,10 @@
   }
   .navlogo {
     width: 40px;
+  }
+
+  .nav-item.search {
+    position: absolute;
+    visibility: hidden;
   }
 }
