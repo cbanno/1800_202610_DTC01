@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Event Creation</title>
+    <meta name="comp1800 template" content="My 1800 App" />
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Web Components (src/components) -->
+    <script type="module" src="/src/components/site-navbar.js"></script>
+    <script type="module" src="/src/components/site-footer.js"></script>
+    <script
+        type="module"
+        src="/src/components/site-party-list-item.js"
+    ></script>
+    <script type="module" src="/src/components/site-login-button.js"></script>
+
+    <!-- Other libraries go here -->
+    </head>
+
+    <body>
+    <!------------------------------>
+    <!-- Your HTML Layout go here -->
+    <!------------------------------>
+
+    <!-- navbar goes here -->
+    <site-navbar></site-navbar>
+
+    <main></main>
+
+    <!-- footer goes here -->
+    <site-footer></site-footer>
+
+    <!---------------------------------------------->
+    <!-- Your own JavaScript functions go here    -->
+    <!---------------------------------------------->
+
+    <!-- Link to scripts of your own -->
+    <script type="module" src="/src/app.js"></script>
+    <script type="module" src="/src/main.js"></script>
+    </body>
+</html>
