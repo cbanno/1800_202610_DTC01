@@ -21,7 +21,7 @@ function showName() {
   onAuthReady(async (user) => {
     // If no user is logged in, redirect to the login page
     if (!user) {
-      location.href = "index.html";
+      // location.href = "index.html";
       return; // Stop execution
     }
 

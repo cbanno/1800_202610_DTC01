@@ -11,28 +11,23 @@
     <!-- Web Components (src/components) -->
     <script type="module" src="/src/components/site-navbar.js"></script>
     <script type="module" src="/src/components/site-footer.js"></script>
-    <script
-        type="module"
-        src="/src/components/site-party-list-item.js"
-    ></script>
+    <script type="module" src="/src/eventCreate.js"></script>
     <script type="module" src="/src/components/site-login-button.js"></script>
 
     <!-- Other libraries go here -->
     </head>
 
     <body>
-    <!------------------------------>
-    <!-- Your HTML Layout go here -->
-    <!------------------------------>
+
 
     <!-- navbar goes here -->
     <site-navbar></site-navbar>
 
     <main>
-    <!-- Signup -->
-    <div id="eventCreate" class="d-none">
+    <!-- Event Creation -->
+    <div id="eventCreate" class="">
         <h3 class="mb-3 text-center">Enter the details of your Watch Party!</h3>
-        <form id="eventForm" novalidate>
+        <form id="eventForm" novalidate class="">
             <div class="mb-3">
                 <input
                     type="text"
