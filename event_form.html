@@ -28,7 +28,67 @@
     <!-- navbar goes here -->
     <site-navbar></site-navbar>
 
-    <main></main>
+    <main>
+    <!-- Signup -->
+    <div id="signupView" class="d-none">
+        <h3 class="mb-3 text-center">Enter the details of your Watch Party!</h3>
+        <form id="eventForm" novalidate>
+            <div class="mb-3">
+                <input
+                    type="text"
+                    id="eventHost"
+                    class="form-control"
+                    placeholder="Name of Venue"
+                    aria-label="Venue"
+                    required
+                />
+            </div>
+            <div class="mb-3">
+                <input
+                    type="text"
+                    id="eventAddress"
+                    class="form-control"
+                    placeholder="Address"
+                    aria-label="Address"
+                    required
+                />
+            </div>
+            <div class="mb-3">
+                <input
+                    type="text"
+                    id="team1"
+                    class="form-control"
+                    placeholder="Home Team"
+                    required
+                />
+            </div><div class="mb-3">
+                <input
+                    type="text"
+                    id="team2"
+                    class="form-control"
+                    placeholder="Away Team"
+                    required
+                />
+            </div></div><div class="mb-3">
+                <input
+                    type="text"
+                    id="eventTime"
+                    class="form-control"
+                    placeholder="Start time of Watch Party"
+                    required
+                />
+            </div>
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="publicitySwitch">
+                <label class="form-check-label" for="switchCheckDefault">Public/Private</label>
+            </div>
+            <button type="submit" class="btn btn-success w-100">
+            Create Event
+            </button>
+        </form>
+        </div>
+    </div>
+</main>
 
     <!-- footer goes here -->
     <site-footer></site-footer>
