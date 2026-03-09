@@ -1,4 +1,4 @@
-class SitePartyListItem extends HTMLElement {
+class SitePartyListItems extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
             <h1>Watch Parties</h1>
@@ -39,4 +39,4 @@ class SitePartyListItem extends HTMLElement {
   }
 }
 
-customElements.define("site-party-list-items", SitePartyListItem);
+customElements.define("site-party-list-items", SitePartyListItems);
