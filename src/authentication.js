@@ -56,7 +56,7 @@ export async function signupUser(name, email, password) {
   const userCredential = await createUserWithEmailAndPassword(
     auth,
     email,
-    password
+    password,
   );
   const user = userCredential.user; // Get the user object
 
@@ -71,8 +71,8 @@ export async function signupUser(name, email, password) {
     await setDoc(doc(db, "users", user.uid), {
       name: name,
       email: email,
-      country: "Canada", // Default value
-      school: "BCIT", // Default value
+      // country: "Canada", // Default value
+      // school: "BCIT", // Default value
     });
     console.log("Firestore user document created successfully!");
   } catch (error) {
@@ -84,7 +84,7 @@ export async function signupUser(name, email, password) {
     alert(
       `Error creating user document:\n${error.code || ""}\n${
         error.message || error
-      }`
+      }`,
     );
   }
   // Return the user object for further use (e.g., redirecting or showing a welcome message)
