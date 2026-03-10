@@ -10,6 +10,8 @@ async function submitEvent(e) {
     const team2 = document.getElementById("team2").value;
     const time = document.getElementById("eventTime").value;
 
+    const isPublic = document.getElementById("eventPrivacy").checked;
+
     try {
         const watchPartyRef = collection(db, "watch_parties");
 
@@ -19,6 +21,7 @@ async function submitEvent(e) {
             team1: team1,
             team2: team2,
             time: time,
+            isPublic: isPublic,
             createdAt: serverTimestamp()
         });
         console.log("Event submitted with ID: ", docRef.id);
