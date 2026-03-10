@@ -8,7 +8,9 @@ async function submitEvent(e) {
     const address = document.getElementById("eventAddress").value;
     const team1 = document.getElementById("team1").value;
     const team2 = document.getElementById("team2").value;
-    const time = document.getElementById("eventTime").value;
+    const timeHour = document.getElementById("eventTimeHour").value;
+    const timeMinute = document.getElementById("eventTimeMinute").value;
+    const timeAMPM = document.getElementById("eventAMPM").value;
 
     const isPublic = document.getElementById("eventPrivacy").checked;
 
@@ -20,7 +22,9 @@ async function submitEvent(e) {
             host: title,
             team1: team1,
             team2: team2,
-            time: time,
+            timeHour: timeHour,
+            timeMinute: timeMinute,
+            isAM: timeAMPM,
             isPublic: isPublic,
             createdAt: serverTimestamp()
         });
