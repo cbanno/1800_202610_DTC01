@@ -14,103 +14,21 @@ class SiteNavbar extends HTMLElement {
     this.innerHTML = `
             <!-- Navbar: single source of truth -->
             <nav class="navbar navbar-expand-lg bg-warning">
-            <div class="container-fluid">
-                <div class="navlogo">
-                    <a class="navbar-brand" href="#">
-                    <img src="images/logo.jpg" height="36" />
-                    </a>
-                    <h4>World Watch</h4>
-                </div>
-
-                <ul class="navbar-nav">
-                    <a href="account.html"><img src="../../images/profile.png" height="50px" width="50px"></a>
-                    <div class="search">
-                        <li class="nav-item">
-                            <input placeholder="Search...">
-                        </li>
-                        <li class="nav-item">
-                            <div class="dropstart">
-                            <button class="btn btn-secondary bg-danger" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
-                            <img class="nav-link" href="#" src="images/filter.png" height="30px" onclick="">
-                            </button>
-                            <ul class="dropdown-menu">
-                                <form action="" target="_self">
-                                <li>
-                                <div class="mb-3">
-                                    <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="Country1">
-                                    <label class="form-check-label" for="Country1">Flag</label>
-                                    </div>
-                                </div>        
-                                </li>
-                                <li>
-                                <div class="mb-3">
-                                    <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="Country2">
-                                    <label class="form-check-label" for="Country2">Flag</label>
-                                    </div>
-                                </div>        
-                                </li>
-                                <li>
-                                <div class="mb-3">
-                                    <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="Country3">
-                                    <label class="form-check-label" for="Country3">Flag</label>
-                                    </div>
-                                </div>
-                                </li>
-                                <li>
-                                <div class="mb-3">
-                                    <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="Country4">
-                                    <label class="form-check-label" for="Country4">Flag</label>
-                                    </div>
-                                </div>
-                                </li>
-                                <li>
-                                <div class="mb-3">
-                                    <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="Country5">
-                                    <label class="form-check-label" for="Country5">Flag</label>
-                                    </div>
-                                </div>        
-                                </li>
-                                <li>
-                                <div class="mb-3">
-                                    <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="Country6">
-                                    <label class="form-check-label" for="Country6">Flag</label>
-                                    </div>
-                                </div>        
-                                </li>
-                                <li>
-                                <div class="mb-3">
-                                    <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="Country6">
-                                    <label class="form-check-label" for="Country6">Flag</label>
-                                    </div>
-                                </div>
-                                </li>
-                                <li>
-                                <div class="mb-3">
-                                    <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="Country7">
-                                    <label class="form-check-label" for="Country7">Flag</label>
-                                    </div>
-                                </div>
-                                </li>
-                                <div class="d-grid p-3 gap-2 d-md-flex justify-content-md-end">
-                                <button class="btn btn-primary me-md-2" type="reset">Clear</button>
-                                <button class="btn btn-primary" type="submit">Confirm</button>
-                                </div>
-                                </form>
-                            </ul>
-                            </div>
-                        </li>
+                <div class="container-fluid">
+                    <div class="navlogo">
+                        <a class="navbar-brand" href="#">
+                            <img src="images/logo.jpg" height="36" />
+                        </a>
+                        <h4>World Watch</h4>
                     </div>
-                </ul>
-                </divid=>
-            </div>
+
+                    <div class="navbar-nav flex flex-row gap-2">
+                        <a href="account.html"><img src="../../images/profile.png" height="50px" width="50px"></a>
+                        <div class="nav-item search">
+                            <input placeholder="Search...">
+                        </div>
+                    </div>
+                </div>
             </nav>
         `;
   }
