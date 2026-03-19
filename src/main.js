@@ -25,7 +25,7 @@ function showName() {
     if (!user && page_to_redirect.includes(location_checker)) {
       location.href = "login.html";
       return; // Stop execution
-    } else if (!user && location_checker == "home.html"){
+    } else if (!user && location_checker == "main.html"){
       location.href = "index.html"
       return;
     }
