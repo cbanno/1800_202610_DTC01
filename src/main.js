@@ -20,10 +20,8 @@ function showName() {
   // Wait until Firebase Auth finishes checking the user's auth state
   onAuthReady(async (user) => {
     // If no user is logged in, redirect to the login page
-    let location_checker = location.href.split('/')[3]
-    const page_to_redirect = ["account.html", "event_form.html", "main.html"]
-    if (!user && page_to_redirect.includes(location_checker)) {
-      location.href = "index.html";
+    if (!user) {
+      // location.href = "index.html";
       return; // Stop execution
     }
 
