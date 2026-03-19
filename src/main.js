@@ -22,7 +22,6 @@ function showName() {
     // If no user is logged in, redirect to the login page
     let location_checker = location.href.split('/')[3]
     const page_to_redirect = ["account.html", "event_form.html", "main.html"]
-    console.log(location_checker)
     if (!user && page_to_redirect.includes(location_checker)) {
       location.href = "index.html";
       return; // Stop execution
