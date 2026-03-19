@@ -21,10 +21,13 @@ function showName() {
   onAuthReady(async (user) => {
     // If no user is logged in, redirect to the login page
     let location_checker = location.href.split('/')[3]
-    const page_to_redirect = ["account.html", "event_form.html", "main.html"]
+    const page_to_redirect = ["account.html", "event_form.html"]
     if (!user && page_to_redirect.includes(location_checker)) {
-      location.href = "index.html";
+      location.href = "login.html";
       return; // Stop execution
+    } else if (!user && location_checker == "home.html"){
+      location.href = "index.html"
+      return;
     }
 
     // Get the user's Firestore document from the "users" collection
