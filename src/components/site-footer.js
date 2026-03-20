@@ -14,7 +14,7 @@ class SiteFooter extends HTMLElement {
     this.innerHTML = `
             <!-- Footer: single source of truth -->
           <nav class="navbar fixed-bottom bg-warning">
-            <div class="container-fluid">
+            <div class="container-fluid d-flex flex-nowrap">
               <a class="navbar-brand" href="main.html">
                 <img src="images/home-sprite.png" height="36" />
               </a>
@@ -29,7 +29,7 @@ class SiteFooter extends HTMLElement {
               </a>
 
               <div class="btn-group dropup dropup-left">
-                <button type="button" class="btn" data-bs-toggle="dropdown" aria-expanded="false">
+                <button type="button" class="btn p-0" data-bs-toggle="dropdown" aria-expanded="false">
                   <img src="images/hamburger-sprite.png" height="36" />
                 </button>
 

@@ -1,43 +1,15 @@
-.nav-item input {
-  border-radius: 10px;
-  /* margin-left: 60%; */
-  /* align-self: right; */
-  /* float:right; */
-}
-
-.nav-item img {
+img {
   padding: 0px;
   cursor: pointer;
-}
-
-.nav-item.search {
-  display: flex;
-  align-items: center;
-}
-
-.nav-item.filter {
-  display: flex;
-  align-items: center;
 }
 
 .dropstart {
   max-width: fit-content;
 }
 
-.navlogo {
-  display: flex;
-  flex-direction: row;
-}
-
-.navlogo h4 {
+h3 {
   visibility: visible;
   margin-top: 10px;
-  font-size: 30px;
-}
-
-.navbar-brand {
-  display: flex;
-  align-items: center;
 }
 
 .card-image {
@@ -49,18 +21,8 @@
 }
 
 @media (max-width: 768px) {
-  .navlogo h4 {
+  h3 {
     visibility: hidden;
-    size: 0px;
-    margin: 0;
-    width: 28px;
-  }
-  .navlogo {
-    width: 40px;
-  }
-
-  .nav-item.search {
-    position: absolute;
-    visibility: hidden;
+    font-size: 0;
   }
 }
