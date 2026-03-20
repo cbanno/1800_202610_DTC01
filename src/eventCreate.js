@@ -33,8 +33,7 @@ async function submitEvent(e) {
             createdBy: auth.currentUser.uid,
             createdAt: serverTimestamp(),
         });
-        
-        const watchPartyID = docRef.id;
+
         console.log("Event submitted with ID: ", docRef.id);
         alert("Event successfully listed!");
 
