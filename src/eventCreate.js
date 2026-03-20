@@ -1,4 +1,4 @@
-import { db } from "./firebaseConfig.js";
+import { db, auth } from "./firebaseConfig.js";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
 async function submitEvent(e) {
@@ -16,9 +16,9 @@ async function submitEvent(e) {
     const partyPrivacy = document.getElementById("partyType").value;
     
     //combines 3 time values into one string
-    const eventTime = '${timeHour}:${timeMinute} ${timeAMPM}' ;
+    const eventTime = `${timeHour}:${timeMinute} ${timeAMPM}` ;
     //combine the 2 teams into 1 venueName
-    const teamMatch = '${team1} VS ${team2}'
+    const teamMatch = `${team1} VS ${team2}`
     try {
         const watchPartyRef = collection(db, "watch_parties");
 
@@ -26,13 +26,15 @@ async function submitEvent(e) {
             address: address,
             host: title,
             venueName: teamMatch,
+            team1: team1,
+            team2: team2,
             time: eventTime,
             partyType: partyPrivacy,
             createdBy: auth.currentUser.uid,
             createdAt: serverTimestamp(),
-            watchPartyID: docRef.id,
         });
-
+        
+        const watchPartyID = docRef.id;
         console.log("Event submitted with ID: ", docRef.id);
         alert("Event successfully listed!");
 
