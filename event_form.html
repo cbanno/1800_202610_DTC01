@@ -25,7 +25,7 @@
 
     <main>
     <!-- Event Creation -->
-    <div id="eventCreate" class="" style="width: 368px;">
+    <div id="eventCreate" class="mx-auto" style="width: 368px;">
         <h3 class="mb-3 text-center">Enter the details of your Watch Party!</h3>
         <form id="eventForm" novalidate class="">
             <div class="mb-3">
@@ -100,9 +100,12 @@
                     <option value="PM">PM</option>
                 </select>
             </div>
-            <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" role="switch" id="eventPrivacy">
-                <label class="form-check-label" for="switchCheckDefault">Private/Public</label>
+            <div class="d-flex flex-row gap-3 mb-3">
+                <select class="form-select" id="partyType">
+                    <option value="Public">Public</option>
+                    <option value="Hosted">Hosted</option>
+                    <option value="Official">Official</option>
+                </select>
             </div>
             <button type="submit" class="btn btn-success w-100">
             Create Event
