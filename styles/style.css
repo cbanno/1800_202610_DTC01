@@ -1,3 +1,7 @@
+body {
+  font-family: 'Inter', sans-serif;
+}
+
 .nav-item input {
   border-radius: 10px;
   /* margin-left: 60%; */
