@@ -1,29 +1,15 @@
-.nav-item input {
-  border-radius: 10px;
-  /* margin-left: 60%; */
-  /* align-self: right; */
-  /* float:right; */
-}
-
-.nav-item img {
+img {
   padding: 0px;
   cursor: pointer;
 }
 
-.search {
-  display: flex;
-  flex-direction: row;
+.dropstart {
+  max-width: fit-content;
 }
 
-.navlogo {
-  display: flex;
-  flex-direction: row;
-}
-
-.navlogo h4 {
+h3 {
   visibility: visible;
   margin-top: 10px;
-  font-size: 30px;
 }
 
 .card-image {
@@ -31,17 +17,12 @@
 }
 
 .form-check {
-    padding-left: 15%;
+  padding-left: 15%;
 }
 
-@media (max-width: 500px) {
-  .navlogo h4 {
+@media (max-width: 768px) {
+  h3 {
     visibility: hidden;
-    size: 0px;
-    margin: 0;
-    width: 28px;
-  }
-  .navlogo {
-    width: 40px;
+    font-size: 0;
   }
 }

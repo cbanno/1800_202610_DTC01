@@ -14,19 +14,19 @@ class SiteNavbar extends HTMLElement {
     this.innerHTML = `
             <!-- Navbar: single source of truth -->
             <nav class="navbar navbar-expand-lg bg-warning">
-                <div class="container-fluid">
-                    <div class="navlogo">
-                        <a class="navbar-brand" href="#">
+                <div class="container-fluid d-flex flex-nowrap">
+                    <div class="d-flex flex-row gap-2">
+                        <a class="d-flex align-items-center" href="#">
                             <img src="images/logo.jpg" height="36" />
                         </a>
-                        <h4>World Watch</h4>
+                        <h3>World Watch</h3>
                     </div>
 
-                    <div class="navbar-nav flex flex-row gap-2">
-                        <a href="account.html"><img src="../../images/profile.png" height="50px" width="50px"></a>
-                        <div class="nav-item search">
-                            <input placeholder="Search...">
+                    <div class="d-flex flex-row gap-2">
+                        <div class="search d-flex align-items-center">
+                            <input class="rounded container" placeholder="Search...">
                         </div>
+                        <a href="account.html"><img src="../../images/profile.png" height="50px" width="50px"></a>
                     </div>
                 </div>
             </nav>
