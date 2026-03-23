@@ -13,7 +13,7 @@ class SiteNavbar extends HTMLElement {
   renderNavbar() {
     this.innerHTML = `
             <!-- Navbar: single source of truth -->
-            <nav class="navbar navbar-expand-lg" style="background-color: #819A91">
+            <nav class="navbar navbar-expand-lg" style="background-color: #AEB784">
                 <div class="container-fluid">
                     <div class="navlogo">
                         <a class="navbar-brand" href="#">

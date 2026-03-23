@@ -8,7 +8,7 @@ class SitePartyListItems extends HTMLElement {
 
             <!-- component: party-list-item -->
             <template id="watchPartyTemplate">
-              <div class="card mb-3"  style="background-color: #D1D8BE">
+              <div class="card mb-3"  style="background-color: white">
                 <div class="card-body d-flex justify-content-between">
                   <div class="d-flex flex-column">
                     <div class="flex">
