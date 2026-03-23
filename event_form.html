@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+    <head>
+    <title>Event Creation</title>
+    <meta name="comp1800 template" content="My 1800 App" />
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Web Components (src/components) -->
+    <script type="module" src="/src/components/site-navbar.js"></script>
+    <script type="module" src="/src/components/site-footer.js"></script>
+    <script type="module" src="/src/eventCreate.js"></script>
+    <script type="module" src="/src/components/site-login-button.js"></script>
+
+    <!-- Other libraries go here -->
+    </head>
+
+    <body>
+
+
+    <!-- navbar goes here -->
+    <site-navbar></site-navbar>
+
+    <main>
+    <!-- Event Creation -->
+    <div id="eventCreate" class="mx-auto" style="width: 368px;">
+        <h3 class="mb-3 text-center">Enter the details of your Watch Party!</h3>
+        <form id="eventForm" novalidate class="">
+            <div class="mb-3">
+                <input
+                    type="text"
+                    id="eventHost"
+                    class="form-control"
+                    placeholder="Name of Venue"
+                    aria-label="Venue"
+                    required
+                />
+            </div>
+            <div class="mb-3">
+                <input
+                    type="text"
+                    id="eventAddress"
+                    class="form-control"
+                    placeholder="Address"
+                    aria-label="Address"
+                    required
+                />
+            </div>
+            <div class="mb-3">
+                <input
+                    type="text"
+                    id="team1"
+                    class="form-control"
+                    placeholder="Home Team"
+                    required
+                />
+            </div><div class="mb-3">
+                <input
+                    type="text"
+                    id="team2"
+                    class="form-control"
+                    placeholder="Away Team"
+                    required
+                />
+            </div>
+            <div class="input-group mb-3" style="width: 250px">
+                <!-- <input
+                    type="text"
+                    id="eventTime"
+                    class="form-control"
+                    placeholder="Start time of Watch Party"
+                    required
+                /> -->
+                <select class="form-select" id="eventTimeHour" required>
+                    <option selected>Hour</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                </select>
+                <select class="form-select" id="eventTimeMinute" required>
+                    <option selected>Minute</option>
+                    <option value="00">00</option>
+                    <option value="15">15</option>
+                    <option value="30">30</option>
+                    <option value="45">45</option>
+                </select>
+                <select class="form-select" id="eventAMPM" required>
+                    <option value="AM">AM</option>
+                    <option value="PM">PM</option>
+                </select>
+            </div>
+            <div class="d-flex flex-row gap-3 mb-3">
+                <select class="form-select" id="partyType" required>
+                    <option value="Public">Public</option>
+                    <option value="Hosted">Hosted</option>
+                    <option value="Official">Official</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-success w-100">
+            Create Event
+            </button>
+        </form>
+    </div>
+</main>
+
+    <!-- footer goes here -->
+    <site-footer></site-footer>
+
+    <!---------------------------------------------->
+    <!-- Your own JavaScript functions go here    -->
+    <!---------------------------------------------->
+
+    <!-- Link to scripts of your own -->
+    <script type="module" src="/src/app.js"></script>
+    <script type="module" src="/src/main.js"></script>
+    </body>
+</html>

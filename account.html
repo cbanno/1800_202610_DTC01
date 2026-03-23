@@ -13,7 +13,7 @@
     <script type="module" src="/src/components/site-footer.js"></script>
     <script
       type="module"
-      src="/src/components/site-party-list-item.js"
+      src="/src/components/site-party-list-items.js"
     ></script>
     <script type="module" src="/src/components/site-login-button.js"></script>
 
@@ -32,10 +32,31 @@
     <main class="p-2">
       <div class="parent container d-flex flex-column justify-content-center align-items-center h-100">
         <img class="child" src="../../images/profile.png" height="250px" width="250px">
-        <h1 class="display-4 child">
-            <span id="name-goes-here"></span>
-        </h1>
-        <span id="account-goes-here"></span>
+      </div>
+
+      <div class="container">
+        <h1>User Profile </h1>
+        <form>
+            <fieldset class="mb-3" id="personalInfoFields" disabled>
+                <div class="form-group">
+                    <label >Name</label>
+                    <input type="text" id="nameInput" class="form-control" placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label >School</label>
+                    <input type="text" id="schoolInput" class="form-control" placeholder="Enter your school">
+                </div>
+                <div class="form-group">
+                    <label >Country</label>
+                    <input type="text" id="countryInput" class="form-control" placeholder="Enter your country">
+                </div>
+            </fieldset>
+            <div class="d-flex justify-content-end mt-5">
+                <button id="editButton" type="button" class="btn btn-secondary">Edit</button>
+                <span style="width: 10px"></span>
+                <button id="saveButton" type="button" class="btn btn-info">Save</button>
+            </div>
+        </form>
       </div>
         
       <site-login-button></site-login-button>
@@ -51,5 +72,6 @@
     <!-- Link to scripts of your own -->
     <script type="module" src="/src/app.js"></script>
     <script type="module" src="/src/main.js"></script>
+    <script type="module" src="/src/profile.js"></script>
   </body>
 </html>

@@ -20,9 +20,14 @@ function showName() {
   // Wait until Firebase Auth finishes checking the user's auth state
   onAuthReady(async (user) => {
     // If no user is logged in, redirect to the login page
-    if (!user) {
-      location.href = "index.html";
+    let location_checker = location.href.split('/')[3]
+    const page_to_redirect = ["account.html", "event_form.html"]
+    if (!user && page_to_redirect.includes(location_checker)) {
+      location.href = "login.html";
       return; // Stop execution
+    } else if (!user && location_checker == "main.html"){
+      location.href = "index.html"
+      return;
     }
 
     // Get the user's Firestore document from the "users" collection
@@ -43,7 +48,6 @@ function showName() {
 }
 
 showName();
-
 
 // -----------------Watch party:database------------------------------------------------------
 function addWatchPartyData() {
@@ -106,3 +110,34 @@ async function seedWatchParties() {
 
 // Call the seeding function when the main.html page loads.
 seedWatchParties();
+
+async function displayWatchParties() {
+  let watchPartyTemplate = document.getElementById("watchPartyTemplate");
+  const watchPartyCollectionRef = collection(db, "watch_parties");
+
+  try {
+    const querySnapshot = await getDocs(watchPartyCollectionRef);
+    querySnapshot.forEach((doc) => {
+      // Clone the template
+      let newParty = watchPartyTemplate.content.cloneNode(true);
+      // Get watch party data once
+      const party = doc.data();
+
+      // Populate the card with watch party data
+      newParty.querySelector(".host").textContent = party.host;
+      newParty.querySelector(".partyType").textContent = party.partyType;
+      newParty.querySelector(".address").textContent = party.address;
+      newParty.querySelector(".team1").textContent = party.team1;
+      newParty.querySelector(".team2").textContent = party.team2;
+      newParty.querySelector(".time").textContent = party.time;
+
+      // Attach the new party to the container
+      document.getElementById("watch-parties").appendChild(newParty);
+    });
+  } catch (error) {
+    console.error("Error getting documents: ", error);
+  }
+}
+
+// Call the function to display watch parties when the page loads
+displayWatchParties();
