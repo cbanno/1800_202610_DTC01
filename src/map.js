@@ -5,7 +5,7 @@ import "maplibre-gl/dist/maplibre-gl.css";
 // Global variable to store user location, hike data - good practice
 // ------------------------------------------------------------
 const appState = {
-  hikes: [],
+  watchParties: [],
   userLngLat: null,
 };
 
