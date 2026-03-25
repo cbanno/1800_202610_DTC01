@@ -7,11 +7,11 @@ class SiteFilterButton extends HTMLElement {
   renderFilterButton() {
     this.innerHTML = `
       <!-- Filter Button Dropdown -->
-      <div class="sticky-top">
+      <div class="sticky-filter">
         <div class="position-absolute end-0">
           <div class="dropstart">
-            <button class="btn" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
-                <img class="nav-link" href="#" src="images/filter-list.svg" height="50px" onclick="" />
+            <button class="btn m-2 filter-button" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                <img class="nav-link" href="#" src="images/filter-list.svg" height="50px" width="40px" onclick="" />
             </button>
             <ul class="dropdown-menu">
               <form action="" target="_self">
