@@ -7,7 +7,7 @@ class SiteMap extends HTMLElement {
   constructor() {
     super();
     this.renderMap();
-    this.renderAuthControls();
+    // this.renderAuthControls();
   }
 
   renderMap() {
