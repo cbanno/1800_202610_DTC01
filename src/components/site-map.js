@@ -3,34 +3,28 @@ import { onAuthStateChanged } from "firebase/auth"; //Detect login state
 import { auth } from "/src/firebaseConfig.js"; //Firebase authentication connection
 import { logoutUser } from "/src/authentication.js"; //Perform logout action
 
-class SiteNavbar extends HTMLElement {
+class SiteMap extends HTMLElement {
   constructor() {
     super();
-    this.renderNavbar();
+    this.renderMap();
     this.renderAuthControls();
   }
 
-  renderNavbar() {
+  renderMap() {
     this.innerHTML = `
-            <!-- Navbar: single source of truth -->
-            <nav class="navbar fixed-top navbar-expand-lg bg-warning">
-                <div class="container-fluid d-flex flex-nowrap">
-                    <div class="d-flex flex-row gap-2">
-                        <a class="d-flex align-items-center" href="#">
-                            <img src="images/logo.jpg" height="36" />
-                        </a>
-                        <h3>World Watch</h3>
-                    </div>
+      <!-- Map: single source of truth -->
+      <h2>Watch Parties Near You</h2>
+      <div id="map" style="width: 100%; height: 400px"></div>
 
-                    <div class="d-flex flex-row gap-2">
-                        <div class="search d-flex align-items-center">
-                            <input class="rounded container" placeholder="Search...">
-                        </div>
-                        <a href="account.html"><img src="../../images/profile.png" height="50px" width="50px"></a>
-                    </div>
-                </div>
-            </nav>
-        `;
+      <!-- <div>
+        <div class="card"></div>
+        <div class="card-body">
+          <h5 class="card-title">Need Suggestion?</h5>
+          <p class="card-text">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit...
+          </p>
+        </div>
+      </div> -->`;
   }
 
   renderAuthControls() {
@@ -54,4 +48,4 @@ class SiteNavbar extends HTMLElement {
   }
 }
 
-customElements.define("site-navbar", SiteNavbar);
+customElements.define("site-map", SiteMap);
