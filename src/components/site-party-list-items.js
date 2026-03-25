@@ -1,9 +1,9 @@
 class SitePartyListItems extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
-            <h1>Watch Parties</h1>
+            <h1 class="p-4 pb-0">Watch Parties</h1>
 
-            <div id="watch-parties" class="row p-4">
+            <div id="watch-parties" class="p-4">
             </div>
 
             <!-- component: party-list-item -->
