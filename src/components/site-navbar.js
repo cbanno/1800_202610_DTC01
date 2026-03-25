@@ -13,7 +13,7 @@ class SiteNavbar extends HTMLElement {
   renderNavbar() {
     this.innerHTML = `
             <!-- Navbar: single source of truth -->
-            <nav class="navbar navbar-expand-lg bg-warning">
+            <nav class="navbar fixed-top navbar-expand-lg bg-warning">
                 <div class="container-fluid d-flex flex-nowrap">
                     <div class="d-flex flex-row gap-2">
                         <a class="d-flex align-items-center" href="#">
