@@ -42,3 +42,27 @@ h3 {
     font-size: 0;
   }
 }
+
+.site-filter-dropdown {
+    max-height: 50vh;
+    overflow-y: auto;
+    min-width: 280px;
+    padding: 1rem;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    border-radius: 12px;
+}
+
+.site-filter-dropdown::-webkit-scrollbar {
+    width: 6px;
+}
+.site-filter-dropdown::-webkit-scrollbar-thumb {
+    background-color: #819A91;
+    border-radius: 10px;
+}
+
+.sticky-filter {
+    position: fixed;
+    top: 90px;
+    right: 20px;
+    z-index: 1020; 
+}
