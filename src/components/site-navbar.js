@@ -17,7 +17,7 @@ class SiteNavbar extends HTMLElement {
                 <div class="container-fluid d-flex flex-nowrap">
                     <div class="d-flex flex-row gap-2">
                         <a class="d-flex align-items-center" href="#">
-                            <img src="images/logo.jpg" height="36" />
+                            <img src="images/WWicon.png" height="36" />
                         </a>
                         <h3>World Watch</h3>
                     </div>
