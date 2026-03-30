@@ -20,13 +20,13 @@ function showName() {
   // Wait until Firebase Auth finishes checking the user's auth state
   onAuthReady(async (user) => {
     // If no user is logged in, redirect to the login page
-    let location_checker = location.href.split('/')[3]
-    const page_to_redirect = ["account.html", "event_form.html"]
+    let location_checker = location.href.split("/")[3];
+    const page_to_redirect = ["account.html", "event_form.html"];
     if (!user && page_to_redirect.includes(location_checker)) {
       location.href = "login.html";
       return; // Stop execution
-    } else if (!user && location_checker == "main.html"){
-      location.href = "index.html"
+    } else if (!user && location_checker == "main.html") {
+      location.href = "index.html";
       return;
     }
 
@@ -56,8 +56,10 @@ function addWatchPartyData() {
   addDoc(watchPartyRef, {
     watchPartyID: "12345",
     venueName: "TEAM1 VS TEAM2",
-    address: "555 Main St.",
-    host: "Dave's bar",
+    address: "2275 Main St.",
+    lat: 49.265140788241595,
+    lng: -123.1011652477399,
+    host: "Steamworks Mount Pleasant",
     time: "5:00pm",
     partyType: "public",
     team1: "team1",
@@ -68,6 +70,8 @@ function addWatchPartyData() {
     watchPartyID: "67890",
     venueName: "TEAM3 VS TEAM4",
     address: "655 Main St.",
+    lat: 49.27899072501974,
+    lng: -123.1000057628109,
     host: "Bob",
     time: "10:00pm",
     partyType: "hosted",
@@ -78,8 +82,10 @@ function addWatchPartyData() {
   addDoc(watchPartyRef, {
     watchPartyID: "10111",
     venueName: "TEAM5 VS TEAM6",
-    address: "755 Main St.",
-    host: "Fred's diner",
+    address: "455 Abbott St.",
+    host: "The Pint Public House",
+    lat: 49.28144696022324,
+    lng: -123.10772973929895,
     time: "7:00pm",
     partyType: "official",
     team1: "team5",
@@ -113,10 +119,12 @@ seedWatchParties();
 
 async function displayWatchParties() {
   let watchPartyTemplate = document.getElementById("watchPartyTemplate");
+  const container = document.getElementById("watch-parties");
   const watchPartyCollectionRef = collection(db, "watch_parties");
 
   try {
     const querySnapshot = await getDocs(watchPartyCollectionRef);
+    container.innerHTML = "";
     querySnapshot.forEach((doc) => {
       // Clone the template
       let newParty = watchPartyTemplate.content.cloneNode(true);
@@ -130,6 +138,14 @@ async function displayWatchParties() {
       newParty.querySelector(".team1").textContent = party.team1;
       newParty.querySelector(".team2").textContent = party.team2;
       newParty.querySelector(".time").textContent = party.time;
+
+      const cardContainer = newParty.querySelector(".party-card-trigger");
+      cardContainer.addEventListener("click", () => {
+      document.getElementById("modalHost").textContent = party.host;
+        document.getElementById("modalTeams").textContent = `${party.team1} VS ${party.team2}`;
+        document.getElementById("modalAddress").textContent = party.address;
+        document.getElementById("modalTime").textContent = party.time;
+      });
 
       // Attach the new party to the container
       document.getElementById("watch-parties").appendChild(newParty);
