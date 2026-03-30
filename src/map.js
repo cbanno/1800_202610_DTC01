@@ -139,19 +139,28 @@ async function getWatchParties() {
   //   for (const doc of snapshot.docs) {
   //       watchParties.push(doc.data());
 
-  return snapshot.docs.map((doc) => doc.data());
+  return snapshot;
 }
 
 // ------------------------------------------------------------
-// This function takes the watch party data and adds green pins to the map.
-// It also stores the hike data in a global variable for later use (e.g., zooming).
+// This function takes the watch party data and adds coloured pins to the map based on partyType.
+// It also stores the watch party data in a global variable for later use (e.g., zooming).
 // ------------------------------------------------------------
 async function showWatchParties(map) {
   // Fetch watch party data from Firestore
   const snapshot = await getWatchParties();
 
-  // Loop through each watch party document and add a green pin to the map
-  snapshot.forEach((doc) => {
+  // Loop through each watch party document and add a pin to the map
+  snapshot.forEach((snap) => {
+    // Extract the watch party data from the Firestore document
+    const doc = snap.data();
+    const popupHtml = `
+                <div>
+                 <p>${doc.host || "Watch Party"}: ${doc.team1} vs. ${doc.team2}</p>
+                 <p>Address: ${doc.address}</p>
+                </div> 
+                `;
+
     // Store watch party data in global variable (array)
     // for later use (e.g., zooming to all points)
     appState.watchParties.push(doc);
@@ -165,7 +174,7 @@ async function showWatchParties(map) {
       pinColour = "blue";
     }
 
-    // create green pin
+    // create pin
     const el = document.createElement("div");
     el.style.width = "16px";
     el.style.height = "16px";
@@ -177,6 +186,15 @@ async function showWatchParties(map) {
     new maplibregl.Marker({ element: el })
       .setLngLat([doc.lng, doc.lat])
       .addTo(map);
+
+    // Add a click event to the marker to show a popup with watch party info
+    el.addEventListener("click", () => {
+      // Show a popup at the watch party's location with watch party info
+      new maplibregl.Popup()
+        .setLngLat([doc.lng, doc.lat])
+        .setHTML(popupHtml)
+        .addTo(map);
+    });
   });
 }
 
