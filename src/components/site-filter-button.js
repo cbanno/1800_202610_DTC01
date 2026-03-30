@@ -5,7 +5,7 @@ class SiteFilterButton extends HTMLElement {
   constructor() {
     super();
     this.renderFilterButton();
-    this.loadCountries(); // Fetch from Firebase
+    this.loadCountries();
   }
 
   renderFilterButton() {
