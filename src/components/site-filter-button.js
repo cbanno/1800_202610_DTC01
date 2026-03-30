@@ -16,7 +16,7 @@ class SiteFilterButton extends HTMLElement {
             <button class="btn m-2 filter-button" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside">
                 <img src="images/filter-list.svg" height="50px" width="40px" />
             </button>
-            <ul class="dropdown-menu p-3" style="min-width: 250px;">
+            <ul class="dropdown-menu p-3 site-filter-dropdown">
               <form id="filterForm">
                 <div id="countryList">
                   <p class="text-muted small">Loading countries...</p>
@@ -44,11 +44,10 @@ class SiteFilterButton extends HTMLElement {
       
       let html = "";
       querySnapshot.forEach((doc) => {
-        const country = doc.data();
-        const countryName = country.name;
-        const group = country.group; 
+        const data = doc.data();
+        const countryName = data.team;
+        const group = data.group; 
 
-        // 2. Build the checkbox HTML dynamically
         html += `
           <div class="form-check mb-2">
             <input type="checkbox" class="form-check-input country-filter" 
