@@ -13,7 +13,7 @@ class SiteMap extends HTMLElement {
   renderMap() {
     this.innerHTML = `
       <!-- Map: single source of truth -->
-      <h2>Watch Parties Near You</h2>
+      <h1 class="p-4 pb-2 ps-0">Watch Parties Near You</h1>
       <div id="map" style="width: 100%; height: 400px"></div>
 
       <!-- <div>

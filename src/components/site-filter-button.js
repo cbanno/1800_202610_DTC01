@@ -13,7 +13,7 @@ class SiteFilterButton extends HTMLElement {
       <div class="sticky-filter">
         <div class="position-absolute end-0">
           <div class="dropstart">
-            <button class="btn m-2 filter-button" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside">
+            <button class="btn m-2 mt-0 filter-button" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside">
                 <img src="images/filter-list.svg" height="50px" width="40px" />
             </button>
             <ul class="dropdown-menu p-3 site-filter-dropdown">
