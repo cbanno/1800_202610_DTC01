@@ -33,7 +33,6 @@ function showMap() {
   map.once("load", async () => {
     // Choose either the built-in geolocate control or the manual pin method
     addGeolocationControl(map);
-    // await addUserPin(map);
     console.log("map loaded, placed user pin!");
   });
 
@@ -57,6 +56,10 @@ function addGeolocationControl(map) {
   // Optional: trigger a locate once the control is added
   geolocate.on("trackuserlocationstart", () => {
     // You can react to tracking start here if needed
+    addUserPin(map);
+
+    // This might work when all watch parties have lat and lng fields
+    // zoomToAll(map);
   });
 }
 
@@ -153,12 +156,21 @@ async function showWatchParties(map) {
     // for later use (e.g., zooming to all points)
     appState.watchParties.push(doc);
 
+    let partyType = doc.partyType;
+    let pinColour = "green";
+
+    if (partyType === "hosted") {
+      pinColour = "red";
+    } else if (partyType === "official") {
+      pinColour = "blue";
+    }
+
     // create green pin
     const el = document.createElement("div");
     el.style.width = "16px";
     el.style.height = "16px";
     el.style.borderRadius = "50%";
-    el.style.backgroundColor = "green";
+    el.style.backgroundColor = pinColour;
     el.style.border = "2px solid white";
 
     // new layer with markers, add to map
