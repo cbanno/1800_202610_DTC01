@@ -154,12 +154,6 @@ async function showWatchParties(map) {
   snapshot.forEach((snap) => {
     // Extract the watch party data from the Firestore document
     const doc = snap.data();
-    const popupHtml = `
-                <div>
-                 <p>${doc.host || "Watch Party"}: ${doc.team1} vs. ${doc.team2}</p>
-                 <p>Address: ${doc.address}</p>
-                </div> 
-                `;
 
     // Store watch party data in global variable (array)
     // for later use (e.g., zooming to all points)
@@ -181,20 +175,31 @@ async function showWatchParties(map) {
     el.style.borderRadius = "50%";
     el.style.backgroundColor = pinColour;
     el.style.border = "2px solid white";
-
-    // new layer with markers, add to map
-    new maplibregl.Marker({ element: el })
-      .setLngLat([doc.lng, doc.lat])
-      .addTo(map);
+    el.style.cursor = "pointer";
+    el.style.pointerEvents = "auto";
 
     // Add a click event to the marker to show a popup with watch party info
-    el.addEventListener("click", () => {
-      // Show a popup at the watch party's location with watch party info
+    el.addEventListener("click", (e) => {
+      e.stopPropagation();
+
+      const popupHtml = `
+        <div>
+          <p><strong>${doc.host || "Watch Party"}</strong></p>
+          <p>${doc.team1} vs. ${doc.team2}</p>
+          <p>Address: ${doc.address}</p>
+        </div> 
+        `;
+
       new maplibregl.Popup()
         .setLngLat([doc.lng, doc.lat])
         .setHTML(popupHtml)
         .addTo(map);
     });
+
+    // new layer with markers, add to map
+    new maplibregl.Marker({ element: el })
+      .setLngLat([doc.lng, doc.lat])
+      .addTo(map);
   });
 }
 
