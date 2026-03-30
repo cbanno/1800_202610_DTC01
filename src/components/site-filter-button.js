@@ -1,94 +1,70 @@
+import { db } from "../firebaseConfig.js";
+import { collection, getDocs, query, orderBy } from "firebase/firestore";
+
 class SiteFilterButton extends HTMLElement {
   constructor() {
     super();
     this.renderFilterButton();
+    this.loadCountries(); // Fetch from Firebase
   }
 
   renderFilterButton() {
     this.innerHTML = `
-      <!-- Filter Button Dropdown -->
       <div class="sticky-filter">
         <div class="position-absolute end-0">
           <div class="dropstart">
-            <button class="btn m-2 filter-button" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
-                <img class="nav-link" href="#" src="images/filter-list.svg" height="50px" width="40px" onclick="" />
+            <button class="btn m-2 filter-button" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside">
+                <img src="images/filter-list.svg" height="50px" width="40px" />
             </button>
-            <ul class="dropdown-menu">
-              <form action="" target="_self">
-                <li>
-                  <div class="mb-3">
-                    <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="Country1" />
-                    <label class="form-check-label" for="Country1">Flag</label>
-                    </div>
-                  </div>        
-                </li>
-                <li>
-                  <div class="mb-3">
-                    <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="Country2" />
-                    <label class="form-check-label" for="Country2">Flag</label>
-                    </div>
-                  </div>        
-                </li>
-                <li>
-                  <div class="mb-3">
-                    <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="Country3" />
-                    <label class="form-check-label" for="Country3">Flag</label>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="mb-3">
-                    <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="Country4" />
-                    <label class="form-check-label" for="Country4">Flag</label>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="mb-3">
-                    <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="Country5" />
-                    <label class="form-check-label" for="Country5">Flag</label>
-                    </div>
-                  </div>        
-                </li>
-                <li>
-                  <div class="mb-3">
-                    <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="Country6" />
-                    <label class="form-check-label" for="Country6">Flag</label>
-                    </div>
-                  </div>        
-                </li>
-                <li>
-                  <div class="mb-3">
-                    <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="Country6" />
-                    <label class="form-check-label" for="Country6">Flag</label>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="mb-3">
-                    <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="Country7" />
-                    <label class="form-check-label" for="Country7">Flag</label>
-                    </div>
-                  </div>
-                </li>
-                <div class="d-grid p-3 gap-2 d-md-flex justify-content-md-end">
-                  <button class="btn btn-primary me-md-2" type="reset">Clear</button>
-                  <button class="btn btn-primary" type="submit">Confirm</button>
+            <ul class="dropdown-menu p-3" style="min-width: 250px;">
+              <form id="filterForm">
+                <div id="countryList">
+                  <p class="text-muted small">Loading countries...</p>
+                </div>
+                <hr>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                  <button class="btn btn-sm btn-outline-secondary" type="reset">Clear</button>
+                  <button class="btn btn-sm btn-primary" type="submit">Confirm</button>
                 </div>
               </form>
             </ul>
           </div>
         </div>
       </div>
-  `;
+    `;
+  }
+
+  async loadCountries() {
+    const countryContainer = this.querySelector("#countryList");
+    
+    try {
+      // 1. Fetch countries ordered by name
+      const q = query(collection(db, "teams"), orderBy("team"));
+      const querySnapshot = await getDocs(q);
+      
+      let html = "";
+      querySnapshot.forEach((doc) => {
+        const country = doc.data();
+        const countryName = country.name;
+        const group = country.group; 
+
+        // 2. Build the checkbox HTML dynamically
+        html += `
+          <div class="form-check mb-2">
+            <input type="checkbox" class="form-check-input country-filter" 
+              id="filter-${doc.id}" value="${countryName}" data-group="${group}">
+            <label class="form-check-label" for="filter-${doc.id}">
+              ${countryName} <span class="badge bg-light text-dark ms-1">${group}</span>
+            </label>
+          </div>
+        `;
+      });
+      
+      countryContainer.innerHTML = html;
+    } catch (error) {
+      console.error("Error loading filters:", error);
+      countryContainer.innerHTML = "Error loading filters.";
+    }
   }
 }
 
