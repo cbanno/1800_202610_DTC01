@@ -7,7 +7,7 @@ class SiteNavbar extends HTMLElement {
   constructor() {
     super();
     this.renderNavbar();
-    this.renderAuthControls();
+    // this.renderAuthControls();
   }
 
   renderNavbar() {
@@ -37,6 +37,7 @@ class SiteNavbar extends HTMLElement {
     const authControls = this.querySelector("#authControls");
 
     // Initialize with invisible placeholder to maintain layout space
+    console.log(authControls)
     authControls.innerHTML = `<div class="btn btn-outline-light" style="visibility: hidden; min-width: 80px;">Log out</div>`;
 
     onAuthStateChanged(auth, (user) => {
