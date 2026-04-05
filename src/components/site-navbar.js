@@ -22,7 +22,7 @@ class SiteNavbar extends HTMLElement {
                 <a href="main.html" class="w3-bar-item w3-button d-flex justify-content-between">Home<img src="images/home-sprite.png" height="36"/></a>
                 <a href="index.html" class="w3-bar-item w3-button d-flex justify-content-between">Browse<img src="images/list-sprite.png" height="36"/></a>
                 <a href="event_form.html" class="w3-bar-item w3-button d-flex justify-content-between">Create<img src="images/plus-sprite.png" height="36"/></a>
-                <a href="map.html" class="w3-bar-item w3-button d-flex justify-content-between">Map<img src="images/map-sprite.png" height="36"/></a>
+                <a href="map.html" class="w3-bar-item w3-button d-flex justify-content-between">Map<img src="images/map-sprite2.png" height="36"/></a>
               </div>
 
 

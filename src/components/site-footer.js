@@ -25,7 +25,7 @@ class SiteFooter extends HTMLElement {
                 <img src="images/plus-sprite.png" height="36" />
               </a>
               <a class="navbar-brand" href="map.html">
-                <img src="images/map-sprite.png" height="36" />
+                <img src="images/map-sprite2.png" height="36" />
               </a>
           </nav>
         `;
