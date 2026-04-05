@@ -13,7 +13,7 @@ class SiteFooter extends HTMLElement {
   renderFooter() {
     this.innerHTML = `
             <!-- Footer: single source of truth -->
-          <nav class="navbar fixed-bottom bg-warning">
+          <nav class="navbar fixed-bottom bg-white">
             <div class="container-fluid d-flex flex-nowrap">
               <a class="navbar-brand" href="main.html">
                 <img src="images/home-sprite.png" height="36" />
@@ -27,20 +27,6 @@ class SiteFooter extends HTMLElement {
               <a class="navbar-brand" href="map.html">
                 <img src="images/map-sprite.png" height="36" />
               </a>
-
-              <div class="btn-group dropup dropup-left">
-                <button type="button" class="btn p-0" data-bs-toggle="dropdown" aria-expanded="false">
-                  <img src="images/hamburger-sprite.png" height="36" />
-                </button>
-
-                <ul class="dropdown-menu dropdown-menu-end" style="min-width: 365px ">
-                  <!-- Dropdown menu links -->
-                    <li><button class="dropdown-item" type="button">Settings</button></li>
-                    <li><button class="dropdown-item" type="button">About Us</button></li>
-                    <li><button class="dropdown-item" type="button">FAQ</button></li>
-                    <div class="p-2"><site-login-button></site-login-button></div>
-                </ul>
-              </div>
           </nav>
         `;
   }
