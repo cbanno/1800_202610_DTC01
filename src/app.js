@@ -10,8 +10,11 @@ import "/styles/style.css";
 // Custom global JS code (shared with all pages)can go here.
 //--------------------------------------------------------------
 
-// This is an example function. Replace it with your own logic.
-function sayHello() {
-  // TODO: implement your logic here
-}
-document.addEventListener("DOMContentLoaded", sayHello);
+function sidebar_open() {
+  document.getElementById("mySidebar").style.display = "block";
+    }
+function sidebar_close() {
+  document.getElementById("mySidebar").style.display = "none";
+    }
+document.getElementById("sidebar_close").addEventListener("click", sidebar_close);
+document.getElementById("sidebar_open").addEventListener("click", sidebar_open);

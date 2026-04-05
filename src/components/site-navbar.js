@@ -14,6 +14,18 @@ class SiteNavbar extends HTMLElement {
     this.innerHTML = `
             <!-- Navbar: single source of truth -->
             <nav class="navbar fixed-top navbar-expand-lg bg-white">
+              <div id="responsive-sidebar">
+                <button class="w3-button" id="sidebar_open""><img src="images/hamburger-sprite.png" height="36" /></button>
+              </div>
+              <div class="w3-sidebar w3-bar-block w3-border-right fixed-top" style="display:none" id="mySidebar" id="responsive-sidebar">
+                <button id="sidebar_close" class="w3-bar-item w3-large">Close &times;</button>
+                <a href="main.html" class="w3-bar-item w3-button d-flex justify-content-between">Home<img src="images/home-sprite.png" height="36"/></a>
+                <a href="index.html" class="w3-bar-item w3-button d-flex justify-content-between">Browse<img src="images/list-sprite.png" height="36"/></a>
+                <a href="event_form.html" class="w3-bar-item w3-button d-flex justify-content-between">Create<img src="images/plus-sprite.png" height="36"/></a>
+                <a href="map.html" class="w3-bar-item w3-button d-flex justify-content-between">Map<img src="images/map-sprite.png" height="36"/></a>
+              </div>
+
+
                 <div class="container-fluid d-flex flex-nowrap">
                     <div class="d-flex flex-row gap-2">
                         <a class="d-flex align-items-center" href="main.html">
@@ -30,6 +42,8 @@ class SiteNavbar extends HTMLElement {
                     </div>
                 </div>
             </nav>
+
+            <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
         `;
   }
 
@@ -37,7 +51,7 @@ class SiteNavbar extends HTMLElement {
     const authControls = this.querySelector("#authControls");
 
     // Initialize with invisible placeholder to maintain layout space
-    console.log(authControls)
+    console.log(authControls);
     authControls.innerHTML = `<div class="btn btn-outline-light" style="visibility: hidden; min-width: 80px;">Log out</div>`;
 
     onAuthStateChanged(auth, (user) => {

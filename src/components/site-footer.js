@@ -13,7 +13,7 @@ class SiteFooter extends HTMLElement {
   renderFooter() {
     this.innerHTML = `
             <!-- Footer: single source of truth -->
-          <nav class="navbar fixed-bottom bg-white">
+          <nav class="navbar fixed-bottom bg-white" id="bottom-nav">
             <div class="container-fluid d-flex flex-nowrap">
               <a class="navbar-brand" href="main.html">
                 <img src="images/home-sprite.png" height="36" />
