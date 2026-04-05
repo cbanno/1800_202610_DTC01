@@ -39,6 +39,31 @@ function showMap() {
   function addControls(map) {
     // Zoom and rotation
     map.addControl(new maplibregl.NavigationControl(), "top-right");
+
+    // Custom legend for watch party types
+    const legendDiv = document.createElement("div");
+    legendDiv.style.padding = "10px";
+    legendDiv.innerHTML = `
+      <div style="background-color: white; padding: 10px; border-radius: 4px; box-shadow: 0 0 0 2px rgba(0,0,0,0.1); font-size: 14px;">
+        <div style="font-weight: bold; margin-bottom: 8px;">Watch Party Types</div>
+        <div style="display: flex; align-items: center; margin-bottom: 6px;">
+          <img src="images/party-private.png" style="width: 20px; height: 20px; margin-right: 8px;" />
+          <span>Hosted Party</span>
+        </div>
+        <div style="display: flex; align-items: center;">
+          <img src="images/party-public.png" style="width: 20px; height: 20px; margin-right: 8px;" />
+          <span>Public Party</span>
+        </div>
+      </div>
+    `;
+
+    class LegendControl {
+      onAdd() {
+        return legendDiv;
+      }
+    }
+
+    map.addControl(new LegendControl(), "top-left");
   }
 }
 
@@ -163,14 +188,13 @@ async function showWatchParties(map) {
     let partyColour;
 
     if (partyType === "hosted") {
-      partyColour = "images/party-private.png"
+      partyColour = "images/party-private.png";
     } else {
-      partyColour = "images/party-public.png"
+      partyColour = "images/party-public.png";
     }
 
     // create pin
     const el = document.createElement("div");
-    el.className = 'marker';
     el.style.width = "24px";
     el.style.height = "24px";
     el.style.backgroundImage = `url(${partyColour})`;
