@@ -14,7 +14,7 @@ class SiteMap extends HTMLElement {
     this.innerHTML = `
       <!-- Map: single source of truth -->
       <h2>Watch Parties Near You</h2>
-      <div id="map" style="width: 100%; height: 400px"></div>
+      <div id="map" style="width: 100%; height: 70vh"></div>
 
       <!-- <div>
         <div class="card"></div>

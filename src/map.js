@@ -160,23 +160,20 @@ async function showWatchParties(map) {
     appState.watchParties.push(doc);
 
     let partyType = doc.partyType;
-    let pinColour = "green";
+    let partyColour;
 
     if (partyType === "hosted") {
-      pinColour = "red";
-    } else if (partyType === "official") {
-      pinColour = "blue";
+      partyColour = "images/party-private.png"
+    } else {
+      partyColour = "images/party-public.png"
     }
 
     // create pin
     const el = document.createElement("div");
-    el.style.width = "16px";
-    el.style.height = "16px";
-    el.style.borderRadius = "50%";
-    el.style.backgroundColor = pinColour;
-    el.style.border = "2px solid white";
-    el.style.cursor = "pointer";
-    el.style.pointerEvents = "auto";
+    el.className = 'marker';
+    el.style.width = "24px";
+    el.style.height = "24px";
+    el.style.backgroundImage = `url(${partyColour})`;
 
     // Add a click event to the marker to show a popup with watch party info
     el.addEventListener("click", (e) => {
