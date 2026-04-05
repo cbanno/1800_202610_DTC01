@@ -25,9 +25,6 @@ function showName() {
     if (!user && page_to_redirect.includes(location_checker)) {
       location.href = "login.html";
       return; // Stop execution
-    } else if (!user && location_checker == "main.html") {
-      location.href = "index.html";
-      return;
     }
 
     // Get the user's Firestore document from the "users" collection

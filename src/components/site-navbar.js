@@ -43,6 +43,8 @@ class SiteNavbar extends HTMLElement {
                 </div>
             </nav>
 
+            <br>
+            <br>
             <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
         `;
   }
