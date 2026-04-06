@@ -1,7 +1,6 @@
 class SitePartyListItems extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
-            <h1 class="p-4 pb-0" id="list_title">Watch Parties</h1>
 
             <div id="watch-parties" class="p-4">
             </div>
