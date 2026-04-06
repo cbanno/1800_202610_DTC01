@@ -9,7 +9,7 @@ import {
   GeoPoint,
 } from "firebase/firestore";
 
-const GEOAPIFY_API_KEY = "cb08da8ec6f9432cbd97d86dfb14932c".trim();
+const GEOAPIFY_API_KEY = "cb08da8ec6f9432cbd97d86dfb14932c";
 
 async function loadCountries() {
   const team1Dropdown = document.getElementById("team1");
@@ -41,8 +41,10 @@ async function loadCountries() {
 async function submitEvent(e) {
   e.preventDefault();
 
+  let [lat, lng, formattedAddress] = await saveAddress();
+
   const eventName = document.getElementById("eventName").value;
-  const address = document.getElementById("eventAddress").value;
+  // const address = document.getElementById("eventAddress").value;
   const team1 = document.getElementById("team1").value;
   const team2 = document.getElementById("team2").value;
 
@@ -59,18 +61,16 @@ async function submitEvent(e) {
   const eventStartTime = `${startTimeHour}:${startTimeMinute} ${startTimeAMPM}`;
   const eventEndTime = `${endTimeHour}:${endTimeMinute} ${endTimeAMPM}`;
 
-  //combine the 2 teams into 1 venueName
-  const teamMatch = `${team1} VS ${team2}`;
-
   try {
     const watchPartyRef = collection(db, "watch_parties");
 
     const docRef = await addDoc(watchPartyRef, {
-      address: address,
+      address: formattedAddress,
       eventName: eventName,
-      venueName: teamMatch,
       team1: team1,
       team2: team2,
+      lat: lat,
+      lng: lng,
       startTime: eventStartTime,
       endTime: eventEndTime,
       partyType: partyPrivacy,
@@ -85,6 +85,72 @@ async function submitEvent(e) {
   } catch (error) {
     console.error("Error adding watch party: ", error);
     alert("Error: " + error.message);
+  }
+}
+
+function showAddressStatus(message, type = "success") {
+  const statusEl = document.getElementById("addressStatus");
+  statusEl.className = `alert alert-${type}`;
+  statusEl.textContent = message;
+  statusEl.classList.remove("d-none");
+}
+
+async function saveAddress() {
+  const user = auth.currentUser;
+
+  if (!user) {
+    showAddressStatus("Please log in first.", "danger");
+    return;
+  }
+
+  const address = document.getElementById("eventAddress")?.value.trim();
+  const postalCode = document.getElementById("eventPostalCode")?.value.trim();
+
+  if (!address || !postalCode) {
+    showAddressStatus("Please enter both address and postal code.", "warning");
+    return;
+  }
+
+  try {
+    showAddressStatus("Searching for address...", "info");
+
+    const fullAddress = `${address}, ${postalCode}, Canada`;
+
+    const url =
+      `https://api.geoapify.com/v1/geocode/search` +
+      `?text=${encodeURIComponent(fullAddress)}` +
+      `&filter=countrycode:ca` +
+      `&apiKey=${encodeURIComponent(GEOAPIFY_API_KEY)}`;
+
+    const response = await fetch(url);
+    const data = await response.json();
+
+    console.log("fullAddress:", fullAddress);
+    console.log("Geoapify response:", data);
+
+    if (data.error) {
+      throw new Error(
+        `Geocoding failed: ${data.statusCode || ""} ${data.error} - ${data.message || ""}`,
+      );
+    }
+
+    if (!data.features || !data.features.length) {
+      throw new Error(
+        `Geocoding failed: no results found for "${fullAddress}"`,
+      );
+    }
+
+    const result = data.features[0];
+    const lat = result.properties.lat;
+    const lng = result.properties.lon;
+    const formattedAddress = result.properties.formatted;
+
+    showAddressStatus(`Address saved!`, "success");
+
+    return [lat, lng, formattedAddress];
+  } catch (error) {
+    console.error(error);
+    showAddressStatus(error.message || "Failed to save address.", "danger");
   }
 }
 
