@@ -44,10 +44,10 @@ function showMap() {
     legendDiv.style.padding = "10px";
     legendDiv.innerHTML = `
       <div style="background-color: white; padding: 10px; border-radius: 4px; box-shadow: 0 0 0 2px rgba(0,0,0,0.1); font-size: 14px;">
-        <div style="font-weight: bold; margin-bottom: 8px;">Watch Party Types</div>
+        <div style="font-size: x-large; font-weight: bold; margin-bottom: 8px;">Watch Parties Near You</div>
         <div style="display: flex; align-items: center; margin-bottom: 6px;">
           <img src="images/party-private.png" style="width: 20px; height: 20px; margin-right: 8px;" />
-          <span>Hosted Party</span>
+          <span>Private Party</span>
         </div>
         <div style="display: flex; align-items: center;">
           <img src="images/party-public.png" style="width: 20px; height: 20px; margin-right: 8px;" />
