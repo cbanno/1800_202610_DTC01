@@ -13,16 +13,16 @@ class SiteNavbar extends HTMLElement {
   renderNavbar() {
     this.innerHTML = `
             <!-- Navbar: single source of truth -->
-            <nav class="navbar fixed-top navbar-expand-lg bg-white">
+            <nav class="navbar fixed-top navbar-expand-lg" style="background-color: #c2e4ff !important;">
               <div id="responsive-sidebar">
                 <button class="w3-button" id="sidebar_open""><img src="images/hamburger-sprite.png" height="36" /></button>
               </div>
-              <div class="w3-sidebar w3-bar-block w3-border-right fixed-top" style="display:none" id="mySidebar" id="responsive-sidebar">
+              <div class="w3-sidebar w3-bar-block w3-border-right fixed-top" style="display:none; background-color: #c2e4ff !important;" id="mySidebar" id="responsive-sidebar">
                 <button id="sidebar_close" class="w3-bar-item w3-large">Close &times;</button>
-                <a href="main.html" class="w3-bar-item w3-button d-flex justify-content-between">Home<img src="images/home-sprite.png" height="36"/></a>
-                <a href="index.html" class="w3-bar-item w3-button d-flex justify-content-between">Browse<img src="images/list-sprite.png" height="36"/></a>
-                <a href="event_form.html" class="w3-bar-item w3-button d-flex justify-content-between">Create<img src="images/plus-sprite.png" height="36"/></a>
-                <a href="map.html" class="w3-bar-item w3-button d-flex justify-content-between">Map<img src="images/map-sprite2.png" height="36"/></a>
+                <a href="main.html" class="w3-bar-item w3-button d-flex justify-content-between"><img src="images/home-sprite.png" height="36"/>Home</a>
+                <a href="index.html" class="w3-bar-item w3-button d-flex justify-content-between"><img src="images/list-sprite.png" height="36"/>Browse</a>
+                <a href="event_form.html" class="w3-bar-item w3-button d-flex justify-content-between"><img src="images/plus-sprite.png" height="36"/>Create</a>
+                <a href="map.html" class="w3-bar-item w3-button d-flex justify-content-between"><img src="images/map-sprite2.png" height="36"/>Map</a>
               </div>
 
 
