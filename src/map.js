@@ -28,11 +28,10 @@ function showMap() {
   // Add controls (zoom, rotation, etc.) shown in top-right corner of map
   addControls(map);
 
-  // Once the map loads, we can add the user location and hike markers, etc.
-  // We wait for the "load" event to ensure the map is fully initialized before we try to add sources/layers.
+  // Once the map loads, we can add the user location and watch party markers, etc.
   map.once("load", async () => {
     // Choose either the built-in geolocate control or the manual pin method
-    addGeolocationControl(map);
+    await addGeolocationControl(map);
     console.log("map loaded, placed user pin!");
   });
 
@@ -67,7 +66,7 @@ function showMap() {
   }
 }
 
-function addGeolocationControl(map) {
+async function addGeolocationControl(map) {
   const geolocate = new maplibregl.GeolocateControl({
     positionOptions: { enableHighAccuracy: true },
     trackUserLocation: true,
@@ -75,22 +74,16 @@ function addGeolocationControl(map) {
   });
   map.addControl(geolocate, "top-right");
 
-  // Show watch parties on map
-  showWatchParties(map);
-
-  // Optional: trigger a locate once the control is added
-  geolocate.on("trackuserlocationstart", () => {
-    // You can react to tracking start here if needed
-    addUserPin(map);
-
-    // This might work when all watch parties have lat and lng fields
-    // zoomToAll(map);
-  });
+  // Load watch parties on map first before setting up the event
+  await showWatchParties(map);
+  await addUserPin(map);
+  zoomToAll(map);
 }
 
 // ------------------------------------------------------------
 // This function manually gets the user's geolocation and adds a custom pin to the map.
 // It also adds a click event to show a popup with "You are here".
+// Made this an async function to await the user location before calling zoomToAll
 // -------------------------------------------------------------
 async function addUserPin(map) {
   if (!("geolocation" in navigator)) {
@@ -99,53 +92,57 @@ async function addUserPin(map) {
   }
 
   // Use the safe geolocation function that returns a Promise
-  navigator.geolocation.getCurrentPosition(
-    (pos) => {
-      // Store user location in global variable for later use (e.g., zooming to all points)
-      appState.userLngLat = [pos.coords.longitude, pos.coords.latitude];
+  return new Promise((resolve, reject) => {
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        // Store user location in global variable for later use (e.g., zooming to all points)
+        appState.userLngLat = [pos.coords.longitude, pos.coords.latitude];
 
-      // Add a GeoJSON source
-      map.addSource("userLngLat", {
-        type: "geojson",
-        data: {
-          type: "FeatureCollection",
-          features: [
-            {
-              type: "Feature",
-              geometry: { type: "Point", coordinates: appState.userLngLat },
-              properties: { description: "Your location" },
-            },
-          ],
-        },
-      });
+        // Add a GeoJSON source
+        map.addSource("userLngLat", {
+          type: "geojson",
+          data: {
+            type: "FeatureCollection",
+            features: [
+              {
+                type: "Feature",
+                geometry: { type: "Point", coordinates: appState.userLngLat },
+                properties: { description: "Your location" },
+              },
+            ],
+          },
+        });
 
-      // Add a simple circle layer
-      map.addLayer({
-        id: "userLngLat",
-        type: "circle",
-        source: "userLngLat",
-        paint: {
-          "circle-color": "#1E90FF",
-          "circle-radius": 6,
-          "circle-stroke-width": 2,
-          "circle-stroke-color": "#ffffff",
-        },
-      });
+        // Add a simple circle layer
+        map.addLayer({
+          id: "userLngLat",
+          type: "circle",
+          source: "userLngLat",
+          paint: {
+            "circle-color": "#1E90FF",
+            "circle-radius": 6,
+            "circle-stroke-width": 2,
+            "circle-stroke-color": "#ffffff",
+          },
+        });
 
-      // Optional: add a tooltip on hover or click
-      map.on("click", "userLngLat", (e) => {
-        const [lng, lat] = e.features[0].geometry.coordinates;
-        new maplibregl.Popup()
-          .setLngLat([lng, lat])
-          .setHTML("You are here")
-          .addTo(map);
-      });
-    },
-    (err) => {
-      console.error("Geolocation error", err);
-    },
-    { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 },
-  );
+        // Optional: add a tooltip on hover or click
+        map.on("click", "userLngLat", (e) => {
+          const [lng, lat] = e.features[0].geometry.coordinates;
+          new maplibregl.Popup()
+            .setLngLat([lng, lat])
+            .setHTML("You are here")
+            .addTo(map);
+        });
+        resolve();
+      },
+      (err) => {
+        console.error("Geolocation error", err);
+        reject(err);
+      },
+      { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 },
+    );
+  });
 }
 
 // ------------------------------------------------------------
@@ -198,30 +195,19 @@ async function showWatchParties(map) {
     el.style.width = "24px";
     el.style.height = "24px";
     el.style.backgroundImage = `url(${partyColour})`;
+    // Add modal attributes
+    el.setAttribute("data-bs-toggle", "modal");
+    el.setAttribute("data-bs-target", "#partyModal");
 
     // Add a click event to the marker to show a popup with watch party info
     el.addEventListener("click", (e) => {
       e.stopPropagation();
-
-      // const popupHtml = `
-      //   <div>
-      //     <p><strong>${doc.host || "Watch Party"}</strong></p>
-      //     <p>${doc.team1} vs. ${doc.team2}</p>
-      //     <p>Address: ${doc.address}</p>
-      //   </div>
-      //   `;
-
-      // new maplibregl.Popup()
-      //   .setLngLat([doc.lng, doc.lat])
-      //   .setHTML(popupHtml)
-      //   .addTo(map);
 
       document.getElementById("modalHost").textContent = party.host;
       document.getElementById("modalTeams").textContent =
         `${party.team1} VS ${party.team2}`;
       document.getElementById("modalAddress").textContent = party.address;
       document.getElementById("modalTime").textContent = party.time;
-      console.log(`click`);
     });
 
     // new layer with markers, add to map
@@ -232,28 +218,25 @@ async function showWatchParties(map) {
 }
 
 // ------------------------------------------------------------
-// This function calculates the bounding box that includes both the user location and all hike locations,
+// This function calculates the bounding box that includes both the user location and all watch party locations,
 // and then zooms the map to fit that bounding box with some padding.
 // It uses the MapLibre "fitBounds" method to smoothly zoom and pan the map.
 // ------------------------------------------------------------
-async function zoomToAll(map) {
+function zoomToAll(map) {
   const bounds = new maplibregl.LngLatBounds();
 
-  // user location
-  console.log("User location:", appState.userLngLat);
-  bounds.extend(appState.userLngLat);
+  bounds.extend(appState.userLngLat)
 
-  // watch party locations
-  console.log("Watch Party data:", appState.watchParties);
-  appState.watchParties.forEach((post) => {
-    console.log(
-      `Adding post to bounds: ${post.name} at [${post.lng}, ${post.lat}]`,
-    );
-    bounds.extend([post.lng, post.lat]);
+  appState.watchParties.forEach((party, index) => {
+    if (party.lng !== undefined && party.lat !== undefined) {
+      bounds.extend([party.lng, party.lat]);
+    } else {
+      console.warn(`Party ${index} has missing coordinates`);
+    }
   });
 
   map.fitBounds(bounds, {
-    padding: 80,
+    padding: 100,
     duration: 1000,
   });
 }
