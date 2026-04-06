@@ -3,7 +3,7 @@ import { onAuthStateChanged } from "firebase/auth"; //Detect login state
 import { auth } from "/src/firebaseConfig.js"; //Firebase authentication connection
 import { logoutUser } from "/src/authentication.js"; //Perform logout action
 
-class SiteMap extends HTMLElement {
+class SitePartyModal extends HTMLElement {
   constructor() {
     super();
     this.renderMap();
@@ -12,18 +12,29 @@ class SiteMap extends HTMLElement {
 
   renderMap() {
     this.innerHTML = `
-      <!-- Map: single source of truth -->
-      <div id="map"></div>
-
-      <!-- <div>
-        <div class="card"></div>
-        <div class="card-body">
-          <h5 class="card-title">Need Suggestion?</h5>
-          <p class="card-text">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit...
-          </p>
+      <!-- Watch Party Modal: single source of truth -->
+      <div class="modal fade" id="partyModal" tabindex="-1" aria-labelledby="partyModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="partyModalLabel">Watch Party Details</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <h3 id="modalHost"></h3>
+              <p id="modalTeams" class="fw-bold"></p>
+              <p id="modalAddress"></p>
+              <p id="modalTime"></p>
+              <hr>
+              <p>Placeholder Event Description</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-success">Join Party</button>
+            </div>
+          </div>
         </div>
-      </div> -->`;
+      </div>`;
   }
 
   renderAuthControls() {
@@ -47,4 +58,4 @@ class SiteMap extends HTMLElement {
   }
 }
 
-customElements.define("site-map", SiteMap);
+customElements.define("site-party-modal", SitePartyModal);

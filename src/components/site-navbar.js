@@ -13,13 +13,25 @@ class SiteNavbar extends HTMLElement {
   renderNavbar() {
     this.innerHTML = `
             <!-- Navbar: single source of truth -->
-            <nav class="navbar fixed-top navbar-expand-lg bg-warning">
+            <nav class="navbar fixed-top navbar-expand-lg" style="background-color: #c2e4ff !important;">
+              <div id="responsive-sidebar">
+                <button class="w3-button" id="sidebar_open""><img src="images/hamburger-sprite.png" height="36" /></button>
+              </div>
+              <div class="w3-sidebar w3-bar-block w3-border-right fixed-top" style="display:none; background-color: #c2e4ff !important;" id="mySidebar" id="responsive-sidebar">
+                <button id="sidebar_close" class="w3-bar-item w3-large">Close &times;</button>
+                <a href="main.html" class="w3-bar-item w3-button d-flex justify-content-between"><img src="images/home-sprite.png" height="36"/>Home</a>
+                <a href="index.html" class="w3-bar-item w3-button d-flex justify-content-between"><img src="images/list-sprite.png" height="36"/>Browse</a>
+                <a href="event_form.html" class="w3-bar-item w3-button d-flex justify-content-between"><img src="images/plus-sprite.png" height="36"/>Create</a>
+                <a href="map.html" class="w3-bar-item w3-button d-flex justify-content-between"><img src="images/map-sprite2.png" height="36"/>Map</a>
+              </div>
+
+
                 <div class="container-fluid d-flex flex-nowrap">
                     <div class="d-flex flex-row gap-2">
                         <a class="d-flex align-items-center" href="main.html">
                             <img src="images/WWicon.png" height="36" />
                         </a>
-                        <h3>World Watch</h3>
+                        <h3 class="text-nowrap pe-2">World Watch</h3>
                     </div>
 
                     <div class="d-flex flex-row gap-2">
@@ -30,6 +42,10 @@ class SiteNavbar extends HTMLElement {
                     </div>
                 </div>
             </nav>
+
+            <br>
+            <br>
+            <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
         `;
   }
 
@@ -37,7 +53,7 @@ class SiteNavbar extends HTMLElement {
     const authControls = this.querySelector("#authControls");
 
     // Initialize with invisible placeholder to maintain layout space
-    console.log(authControls)
+    console.log(authControls);
     authControls.innerHTML = `<div class="btn btn-outline-light" style="visibility: hidden; min-width: 80px;">Log out</div>`;
 
     onAuthStateChanged(auth, (user) => {
