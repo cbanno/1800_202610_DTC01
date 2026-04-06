@@ -25,12 +25,13 @@ function populateUserInfo() {
           const userData = userSnap.data();
     
           //extract the fields
-					const { name = "", school = "", country = "" } = userData;
+					const { name = "", email = ""} = userData;
 
           //update the DOM elements with fields
 					document.getElementById("nameInput").value = name;
-					document.getElementById("schoolInput").value = school;
-					document.getElementById("countryInput").value = country;
+          document.getElementById("emailInput").innerHTML = email;
+					// document.getElementById("schoolInput").value = school;
+					// document.getElementById("countryInput").value = country;
         } else {
           console.log("No such document!");
         }
@@ -70,10 +71,10 @@ async function saveUserInfo() {
 
      //a) get user entered values
     const userName = document.getElementById('nameInput').value;       //get the value of the field with id="nameInput"
-    const userSchool = document.getElementById('schoolInput').value;     //get the value of the field with id="schoolInput"
-    const userCountry = document.getElementById('countryInput').value;       //get the value of the field with id="cityInput"
+    // const userSchool = document.getElementById('schoolInput').value;     //get the value of the field with id="schoolInput"
+    // const userCountry = document.getElementById('countryInput').value;       //get the value of the field with id="cityInput"
      //b) update user's document in Firestore
-    await updateUserDocument(user.uid, userName, userSchool, userCountry); 
+    await updateUserDocument(user.uid, userName); 
      //c) disable edit 
      document.getElementById('personalInfoFields').disabled = true;
 }
@@ -84,10 +85,10 @@ async function saveUserInfo() {
 //   uid (string)  – user’s UID
 //   name, school, city (strings)
 //-------------------------------------------------------------
-async function updateUserDocument(uid, name, school, country) {
+async function updateUserDocument(uid, name) {
   try {
     const userRef = doc(db, "users", uid);
-    await updateDoc(userRef, { name, school, country });
+    await updateDoc(userRef, { name });
     console.log("User document successfully updated!");
   } catch (error) {
     console.error("Error updating user document:", error);

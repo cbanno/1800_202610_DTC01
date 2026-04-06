@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Account</title>
+    <title>Account - World Watch</title>
     <meta name="comp1800 template" content="My 1800 App" />
     <link rel="icon" type="image/x-icon" href="/images/WWicon.png">
 
@@ -28,39 +28,37 @@
 
     <!-- navbar goes here -->
     <site-navbar></site-navbar>
+    <br>
 
     <!-- Stuff for body goes here --> 
     <main class="p-2">
       <div class="parent container d-flex flex-column justify-content-center align-items-center h-100">
-        <img class="child" src="../../images/profile.png" height="250px" width="250px">
+        <img class="child" src="../../images/WWPFP.png" height="250px" width="250px">
       </div>
 
       <div class="container" class="mx-auto" style="width: 368px;">
         <h1>User Profile </h1>
+        <h5>Email: <span id="emailInput"></span></h5>
         <form>
             <fieldset class="mb-3" id="personalInfoFields" disabled>
                 <div class="form-group">
                     <label >Name</label>
                     <input type="text" id="nameInput" class="form-control" placeholder="Enter your name">
                 </div>
-                <div class="form-group">
-                    <label >School</label>
-                    <input type="text" id="schoolInput" class="form-control" placeholder="Enter your school">
-                </div>
-                <div class="form-group">
-                    <label >Country</label>
-                    <input type="text" id="countryInput" class="form-control" placeholder="Enter your country">
-                </div>
             </fieldset>
-            <div class="d-flex justify-content-end mt-5">
-                <button id="editButton" type="button" class="btn btn-secondary">Edit</button>
-                <span style="width: 10px"></span>
-                <button id="saveButton" type="button" class="btn btn-info">Save</button>
-            </div>
+              <div class="d-flex d-flex justify-content-between mt-5">
+                  <site-login-button></site-login-button>
+                  <div class="my-auto">
+                    <button id="editButton" type="button" class="btn btn-secondary">Edit</button>
+                    <span style="width: 10px"></span>
+                    <button id="saveButton" type="button" class="btn btn-info">Save</button>
+                  </div>
+
+              </div>              
+
         </form>
       </div>
         
-      <site-login-button></site-login-button>
     </main>
 
     <!-- footer goes here -->
@@ -72,7 +70,7 @@
 
     <!-- Link to scripts of your own -->
     <script type="module" src="/src/app.js"></script>
-    <script type="module" src="/src/main.js"></script>
+    <!-- <script type="module" src="/src/main.js"></script> -->
     <script type="module" src="/src/profile.js"></script>
   </body>
 </html>
