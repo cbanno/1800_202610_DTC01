@@ -12,41 +12,42 @@ class SiteNavbar extends HTMLElement {
 
   renderNavbar() {
     this.innerHTML = `
-            <!-- Navbar: single source of truth -->
-            <nav class="navbar fixed-top navbar-expand-lg" style="background-color: #c2e4ff !important;">
-              <div id="responsive-sidebar">
-                <button class="w3-button" id="sidebar_open""><img src="images/hamburger-sprite.png" height="36" /></button>
-              </div>
-              <div class="w3-sidebar w3-bar-block w3-border-right fixed-top" style="display:none; background-color: #c2e4ff !important;" id="mySidebar" id="responsive-sidebar">
-                <button id="sidebar_close" class="w3-bar-item w3-large">Close &times;</button>
-                <a href="main.html" class="w3-bar-item w3-button d-flex justify-content-between"><img src="images/home-sprite.png" height="36"/>Home</a>
-                <a href="index.html" class="w3-bar-item w3-button d-flex justify-content-between"><img src="images/list-sprite.png" height="36"/>Browse</a>
-                <a href="event_form.html" class="w3-bar-item w3-button d-flex justify-content-between"><img src="images/plus-sprite.png" height="36"/>Create</a>
-                <a href="map.html" class="w3-bar-item w3-button d-flex justify-content-between"><img src="images/map-sprite2.png" height="36"/>Map</a>
-              </div>
+      <!-- Navbar: single source of truth -->
+      <nav class="navbar fixed-top navbar-expand-lg" style="background-color: #c2e4ff !important;">
+        <div id="responsive-sidebar">
+          <button class="w3-button" id="sidebar_open""><img src="images/hamburger-sprite.png" height="36" /></button>
+        </div>
+        <div class="w3-sidebar w3-bar-block w3-border-right fixed-top" style="display:none; background-color: #c2e4ff !important;" id="mySidebar" id="responsive-sidebar">
+          <button id="sidebar_close" class="w3-bar-item w3-large">Close &times;</button>
+          <a href="main.html" class="w3-bar-item w3-button d-flex justify-content-between"><img src="images/home-sprite.png" height="36"/>Home</a>
+          <a href="index.html" class="w3-bar-item w3-button d-flex justify-content-between"><img src="images/list-sprite.png" height="36"/>Browse</a>
+          <a href="event_form.html" class="w3-bar-item w3-button d-flex justify-content-between"><img src="images/plus-sprite.png" height="36"/>Create</a>
+          <a href="map.html" class="w3-bar-item w3-button d-flex justify-content-between"><img src="images/map-sprite2.png" height="36"/>Map</a>
+        </div>
 
 
-                <div class="container-fluid d-flex flex-nowrap">
-                    <div class="d-flex flex-row gap-2">
-                        <a class="d-flex align-items-center" href="main.html">
-                            <img src="images/WWicon.png" height="36" />
-                        </a>
-                        <h3 class="text-nowrap pe-2">World Watch</h3>
-                    </div>
+        <div class="container-fluid d-flex flex-nowrap">
+          <div class="d-flex flex-row gap-2">
+            <a class="d-flex align-items-center" href="main.html">
+              <img src="images/WWicon.png" height="36" />
+            </a>
+            <h3 class="text-nowrap pe-2">World Watch</h3>
+          </div>
 
-                    <div class="d-flex flex-row gap-2">
-                        <div class="search d-flex align-items-center">
-                            <input class="rounded container" placeholder="Search...">
-                        </div>
-                        <a href="account.html"><img src="../../images/profile.png" height="50px" width="50px"></a>
-                    </div>
-                </div>
-            </nav>
+          <div class="d-flex flex-row gap-2">
+            <div class="search position-relative d-flex align-items-center">
+              <input type="text" id="searchInput" class="form-control" placeholder="Search...">
+              <div id="suggestions" class="autocomplete-suggestions"></div>
+            </div>
+            <a href="account.html"><img src="../../images/profile.png" height="50px" width="50px"></a>
+          </div>
+        </div>
+      </nav>
 
-            <br>
-            <br>
-            <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
-        `;
+      <br>
+      <br>
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+  `;
   }
 
   renderAuthControls() {
