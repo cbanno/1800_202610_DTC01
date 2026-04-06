@@ -3,7 +3,7 @@
   <head>
     <title>Browse - World Watch</title>
     <meta name="comp1800 template" content="My 1800 App" />
-    <link rel="icon" type="image/x-icon" href="/images/WWicon.png">
+    <link rel="icon" type="image/x-icon" href="/images/WWicon.png" />
 
     <!-- Required meta tags -->
     <meta charset="utf-8" />
@@ -18,6 +18,7 @@
     ></script>
     <script type="module" src="/src/components/site-login-button.js"></script>
     <script type="module" src="/src/components/site-filter-button.js"></script>
+    <script type="module" src="/src/components/site-party-modal.js"></script>
 
     <!-- Other libraries go here -->
   </head>
@@ -38,6 +39,8 @@
 
       <site-party-list-items></site-party-list-items>
       <div id="watch-parties" class="p-4"></div>
+      
+      <site-party-modal></site-party-modal>
     </main>
 
     <!-- footer goes here -->
