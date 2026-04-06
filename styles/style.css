@@ -47,6 +47,14 @@ h3 {
   display: block;
 }
 
+#watch-party-item{
+  width: 70%;
+}
+
+  #list_title {
+    text-align: center;
+  }
+
 @media (max-width: 991px) {
   /* h3 {
     visibility: hidden;
@@ -58,6 +66,14 @@ h3 {
 }
   #responsive-sidebar {
     display: none;
+  }
+  
+  #watch-party-item{
+    width: 100%;
+  }
+
+  #list_title {
+    text-align: left;
   }
 }
 

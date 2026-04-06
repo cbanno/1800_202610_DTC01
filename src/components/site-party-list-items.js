@@ -1,14 +1,14 @@
 class SitePartyListItems extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
-            <h1 class="p-4 pb-0">Watch Parties</h1>
+            <h1 class="p-4 pb-0" id="list_title">Watch Parties</h1>
 
             <div id="watch-parties" class="p-4">
             </div>
 
             <!-- component: party-list-item -->
             <template id="watchPartyTemplate">
-              <div class="card mb-3 party-card-trigger" 
+              <div class="card mb-3 party-card-trigger mx-auto" id="watch-party-item"
                   style="cursor: pointer;" 
                   data-bs-toggle="modal" 
                   data-bs-target="#partyModal">
@@ -56,7 +56,7 @@ class SitePartyListItems extends HTMLElement {
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-success">Join Party</button>
+              <button type="button" class="btn btn-primary">Join Party</button>
             </div>
             </div>
           </div>
