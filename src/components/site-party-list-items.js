@@ -1,10 +1,6 @@
 class SitePartyListItems extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
-
-            <div id="watch-parties" class="p-4">
-            </div>
-
             <!-- component: party-list-item -->
             <template id="watchPartyTemplate">
               <div class="card mb-3 party-card-trigger mx-auto" id="watch-party-item"

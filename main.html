@@ -96,33 +96,25 @@
 
       <div class="container m-5 bg-light rounded mx-auto">
         <h1>Newest Watch parties</h1>
-        <div class="row p-3">
-          <div class="col-sm p-2 d-flex d-wrap">
+        <div class="row flex-row flex-nowrap">
+          <div class="col-sm p-2">
             <site-party-list-items></site-party-list-items>
-          </div>
-          <div class="col-sm p-2">
-            <img class="rounded-top" src="./images/AM01.jpg" height="200px">
-          </div>
-          <div class="col-sm p-2">
-            <img class="rounded-top" src="./images/AM01.jpg" height="200px">
+            <div id="new-watch-parties" id="main-carousel" class="p-4 row flex-row flex-nowrap" style="overflow: auto; white-space: nowrap;"></div>
           </div>
         </div>
       </div>
 
+
       <div class="container m-5 bg-light rounded mx-auto">
         <h1>Upcoming Watch parties</h1>
-        <div class="row p-3">
+        <div class="row flex-row flex-nowrap">
           <div class="col-sm p-2">
-            <img class="rounded-top" src="./images/AM01.jpg" height="200px">
-          </div>
-          <div class="col-sm p-2">
-            <img class="rounded-top" src="./images/AM01.jpg" height="200px">
-          </div>
-          <div class="col-sm p-2">
-            <img class="rounded-top" src="./images/AM01.jpg" height="200px">
+            <site-party-list-items></site-party-list-items>
+            <div id="upcoming-watch-parties" id="main-carousel" class="p-4 row flex-row flex-nowrap" style="overflow: auto; white-space: nowrap;"></div>
           </div>
         </div>
       </div>
+
       <!-- <site-login-button></site-login-button> -->
     </main>
 
@@ -155,6 +147,6 @@
 
     <!-- Link to scripts of your own -->
     <script type="module" src="/src/app.js"></script>
-    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="/src/landing-main.js"></script>
   </body>
 </html>
