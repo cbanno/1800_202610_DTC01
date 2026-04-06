@@ -1,3 +1,7 @@
+html * {
+    font-family: 'Inter', sans-serif !important;
+}
+
 body {
   margin-top: 60px;
   margin-bottom: 60px;
@@ -24,7 +28,7 @@ img {
 }
 
 h3 {
-  visibility: visible;
+  /* visibility: visible; */
   margin-top: 10px;
 }
 
