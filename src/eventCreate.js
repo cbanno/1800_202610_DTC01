@@ -5,8 +5,8 @@ import {
   getDocs,
   query,
   orderBy,
+  Timestamp,
   serverTimestamp,
-  GeoPoint,
 } from "firebase/firestore";
 
 const GEOAPIFY_API_KEY = "cb08da8ec6f9432cbd97d86dfb14932c";
@@ -44,7 +44,7 @@ async function submitEvent(e) {
   let [lat, lng, formattedAddress] = await saveAddress();
 
   const eventName = document.getElementById("eventName").value;
-  // const address = document.getElementById("eventAddress").value;
+  const eventDate = new Date(document.getElementById("eventDate").value);
   const team1 = document.getElementById("team1").value;
   const team2 = document.getElementById("team2").value;
 
@@ -71,6 +71,7 @@ async function submitEvent(e) {
       team2: team2,
       lat: lat,
       lng: lng,
+      eventDate: Timestamp.fromDate(eventDate),
       startTime: eventStartTime,
       endTime: eventEndTime,
       partyType: partyPrivacy,

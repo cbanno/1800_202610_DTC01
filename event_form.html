@@ -68,7 +68,11 @@
             </div>
           </div>
           <div class="input-group mb-3 d-flex align-items-center">
-            <label for="eventStartTimeHour" class="pe-2">Start time:</label>
+            <label for="eventDate" class="pe-2">Party Date:</label>
+            <input type="date" id="eventDate" class="form-control" required />
+          </div>
+          <div class="input-group mb-3 d-flex align-items-center">
+            <label for="eventStartTimeHour" class="pe-2">Party Start:</label>
             <select class="form-select" id="eventStartTimeHour" required>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -94,7 +98,7 @@
             </select>
           </div>
           <div class="input-group mb-3 d-flex align-items-center">
-            <label for="eventEndTimeHour" class="pe-3">End time:</label>
+            <label for="eventEndTimeHour" class="pe-3">Party End:</label>
             <select class="form-select" id="eventEndTimeHour" required>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -126,7 +130,9 @@
             </select>
             <div class="d-flex align-items-center partyTypePopup">
               <img src="images/help.svg" height="26px" />
-              <span class="partyTypePopupText">Public venue or a private residence?</span>
+              <span class="partyTypePopupText"
+                >Public venue or a private residence?</span
+              >
             </div>
           </div>
           <button type="submit" class="btn btn-primary w-100">
