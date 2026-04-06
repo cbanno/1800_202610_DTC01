@@ -178,13 +178,13 @@ async function showWatchParties(map) {
   // Loop through each watch party document and add a pin to the map
   snapshot.forEach((snap) => {
     // Extract the watch party data from the Firestore document
-    const doc = snap.data();
+    const party = snap.data();
 
     // Store watch party data in global variable (array)
     // for later use (e.g., zooming to all points)
-    appState.watchParties.push(doc);
+    appState.watchParties.push(party);
 
-    let partyType = doc.partyType;
+    let partyType = party.partyType;
     let partyColour;
 
     if (partyType === "hosted") {
@@ -203,23 +203,30 @@ async function showWatchParties(map) {
     el.addEventListener("click", (e) => {
       e.stopPropagation();
 
-      const popupHtml = `
-        <div>
-          <p><strong>${doc.host || "Watch Party"}</strong></p>
-          <p>${doc.team1} vs. ${doc.team2}</p>
-          <p>Address: ${doc.address}</p>
-        </div> 
-        `;
+      // const popupHtml = `
+      //   <div>
+      //     <p><strong>${doc.host || "Watch Party"}</strong></p>
+      //     <p>${doc.team1} vs. ${doc.team2}</p>
+      //     <p>Address: ${doc.address}</p>
+      //   </div>
+      //   `;
 
-      new maplibregl.Popup()
-        .setLngLat([doc.lng, doc.lat])
-        .setHTML(popupHtml)
-        .addTo(map);
+      // new maplibregl.Popup()
+      //   .setLngLat([doc.lng, doc.lat])
+      //   .setHTML(popupHtml)
+      //   .addTo(map);
+
+      document.getElementById("modalHost").textContent = party.host;
+      document.getElementById("modalTeams").textContent =
+        `${party.team1} VS ${party.team2}`;
+      document.getElementById("modalAddress").textContent = party.address;
+      document.getElementById("modalTime").textContent = party.time;
+      console.log(`click`);
     });
 
     // new layer with markers, add to map
     new maplibregl.Marker({ element: el })
-      .setLngLat([doc.lng, doc.lat])
+      .setLngLat([party.lng, party.lat])
       .addTo(map);
   });
 }
