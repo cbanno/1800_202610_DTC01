@@ -81,7 +81,7 @@ async function submitEvent(e) {
     console.log("Event submitted with ID: ", docRef.id);
     alert("Event successfully listed!");
 
-    window.location.href = "main.html?docID=${eventID}";
+    window.location.href = "account.html#created-watch-parties";
   } catch (error) {
     console.error("Error adding watch party: ", error);
     alert("Error: " + error.message);
@@ -154,5 +154,13 @@ async function saveAddress() {
   }
 }
 
+function partyTypeHelp() {
+  var popup = document.querySelector(".partyTypePopupText");
+  popup.classList.toggle("show");
+}
+
 loadCountries();
+document
+  .querySelector(".partyTypePopup")
+  .addEventListener("click", partyTypeHelp);
 document.getElementById("eventForm").addEventListener("submit", submitEvent);

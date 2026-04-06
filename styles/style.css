@@ -36,33 +36,98 @@ h3 {
   padding-left: 15%;
 }
 
+.site-filter-dropdown {
+  max-height: 50vh;
+  overflow-y: auto;
+  min-width: 280px;
+  padding: 1rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+}
+
+.site-filter-dropdown::-webkit-scrollbar {
+  width: 6px;
+}
+.site-filter-dropdown::-webkit-scrollbar-thumb {
+  background-color: #819a91;
+  border-radius: 10px;
+}
+
+.sticky-filter {
+  position: fixed;
+  top: 90px;
+  right: 20px;
+  z-index: 1020;
+}
+
+/* Popup container  */
+.partyTypePopup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* The actual popup */
+.partyTypePopup .partyTypePopupText {
+  visibility: hidden;
+  width: 160px;
+  background-color: #c2e4ff;
+  color: #000000;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -80px;
+}
+
+/* Popup arrow */
+.partyTypePopup .partyTypePopupText::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #c2e4ff transparent transparent transparent;
+}
+
+/* Toggle this class - hide and show the popup */
+.partyTypePopup .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 0.5s;
+  animation: fadeIn 0.5s;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 @media (max-width: 768px) {
   h3 {
     visibility: hidden;
     font-size: 0;
   }
-}
-
-.site-filter-dropdown {
-    max-height: 50vh;
-    overflow-y: auto;
-    min-width: 280px;
-    padding: 1rem;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-    border-radius: 12px;
-}
-
-.site-filter-dropdown::-webkit-scrollbar {
-    width: 6px;
-}
-.site-filter-dropdown::-webkit-scrollbar-thumb {
-    background-color: #819A91;
-    border-radius: 10px;
-}
-
-.sticky-filter {
-    position: fixed;
-    top: 90px;
-    right: 20px;
-    z-index: 1020; 
 }
