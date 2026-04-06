@@ -119,10 +119,12 @@ seedWatchParties();
 
 async function displayWatchParties() {
   let watchPartyTemplate = document.getElementById("watchPartyTemplate");
+  const container = document.getElementById("watch-parties");
   const watchPartyCollectionRef = collection(db, "watch_parties");
 
   try {
     const querySnapshot = await getDocs(watchPartyCollectionRef);
+    container.innerHTML = "";
     querySnapshot.forEach((doc) => {
       // Clone the template
       let newParty = watchPartyTemplate.content.cloneNode(true);
@@ -136,6 +138,14 @@ async function displayWatchParties() {
       newParty.querySelector(".team1").textContent = party.team1;
       newParty.querySelector(".team2").textContent = party.team2;
       newParty.querySelector(".time").textContent = party.time;
+
+      const cardContainer = newParty.querySelector(".party-card-trigger");
+      cardContainer.addEventListener("click", () => {
+      document.getElementById("modalHost").textContent = party.host;
+        document.getElementById("modalTeams").textContent = `${party.team1} VS ${party.team2}`;
+        document.getElementById("modalAddress").textContent = party.address;
+        document.getElementById("modalTime").textContent = party.time;
+      });
 
       // Attach the new party to the container
       document.getElementById("watch-parties").appendChild(newParty);

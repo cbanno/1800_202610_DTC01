@@ -7,17 +7,17 @@ class SiteNavbar extends HTMLElement {
   constructor() {
     super();
     this.renderNavbar();
-    this.renderAuthControls();
+    // this.renderAuthControls();
   }
 
   renderNavbar() {
     this.innerHTML = `
             <!-- Navbar: single source of truth -->
-            <nav class="navbar navbar-expand-lg bg-warning">
+            <nav class="navbar fixed-top navbar-expand-lg bg-warning">
                 <div class="container-fluid d-flex flex-nowrap">
                     <div class="d-flex flex-row gap-2">
-                        <a class="d-flex align-items-center" href="#">
-                            <img src="images/logo.jpg" height="36" />
+                        <a class="d-flex align-items-center" href="main.html">
+                            <img src="images/WWicon.png" height="36" />
                         </a>
                         <h3>World Watch</h3>
                     </div>
@@ -37,6 +37,7 @@ class SiteNavbar extends HTMLElement {
     const authControls = this.querySelector("#authControls");
 
     // Initialize with invisible placeholder to maintain layout space
+    console.log(authControls)
     authControls.innerHTML = `<div class="btn btn-outline-light" style="visibility: hidden; min-width: 80px;">Log out</div>`;
 
     onAuthStateChanged(auth, (user) => {
