@@ -13,7 +13,7 @@ class SiteMap extends HTMLElement {
   renderMap() {
     this.innerHTML = `
       <!-- Map: single source of truth -->
-      <div id="map" style="width: 100%; height: 90vh"></div>
+      <div id="map"></div>
 
       <!-- <div>
         <div class="card"></div>
