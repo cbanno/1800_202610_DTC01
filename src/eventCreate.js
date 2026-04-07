@@ -9,7 +9,7 @@ import {
   serverTimestamp,
 } from "firebase/firestore";
 
-const GEOAPIFY_API_KEY = "cb08da8ec6f9432cbd97d86dfb14932c";
+const GEOAPIFY_API_KEY = VITE_GEOAPIFY_API_KEY;
 
 async function loadCountries() {
   const team1Dropdown = document.getElementById("team1");
