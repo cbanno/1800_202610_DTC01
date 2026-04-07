@@ -51,6 +51,10 @@ class SiteFilterButton extends HTMLElement {
     });
 
     this.dispatchEvent(filterEvent);
+
+    const dropdownElement = this.querySelector('.filter-button');
+    const modal = bootstrap.Dropdown.getInstance(dropdownElement);
+    if (modal) modal.hide();
   }
 
   async loadCountries() {
