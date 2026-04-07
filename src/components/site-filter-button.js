@@ -40,7 +40,17 @@ class SiteFilterButton extends HTMLElement {
   handleFilterSubmit(e) {
     e.preventDefault();
 
-    
+    const filterFlag = this.querySelectorAll(".country-filter:checked");
+
+    const selectedFlags = Array.from(filterFlag).map(cb => cb.value) ;
+
+    const filterEvent = new CustomEvent("filterChanged", {
+      detail: { countries: selectedFlags },
+      bubbles: true,
+      composed: true
+    });
+
+    this.dispatchEvent(filterEvent);
   }
 
   async loadCountries() {
