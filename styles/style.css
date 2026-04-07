@@ -147,15 +147,36 @@ h3 {
   display: block;
 }
 
-@media (max-width: 768px) {
+#watch-party-item {
+  width: 70%;
+}
+
+#list_title {
+  text-align: center;
+}
+
+@media (max-width: 991px) {
   h3 {
     visibility: hidden;
     font-size: 0;
   }
-  #bottom-nav {
+    #bottom-nav {
     visibility: visible;
   }
   #responsive-sidebar {
     display: none;
   }
+
+  #map {
+    height: calc(100vh - 120px);
+  }
+
+  #watch-party-item {
+    width: 100%;
+  }
+
+  #list_title {
+    text-align: left;
+  }
 }
+
