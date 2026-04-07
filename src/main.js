@@ -158,5 +158,12 @@ async function displayWatchParties(filters = []) {
   }
 }
 
-// Call the function to display watch parties when the page loads
 displayWatchParties();
+
+//Listener for the change of filters from web component
+document.addEventListener("filterEdit", (event) => {
+  const selectedFlags = event.detail.countries;
+  console.log("Applying filter for: ", selectedFlags);
+
+  displayWatchParties(selectedFlags);
+})
