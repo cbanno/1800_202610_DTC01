@@ -32,6 +32,15 @@ class SiteFilterButton extends HTMLElement {
         </div>
       </div>
     `;
+
+    const form = this.querySelector("filterForm") ;
+    form.addEventListener("submit", (e) => this.handleFilterSubmit(e)) ;
+  }
+
+  handleFilterSubmit(e) {
+    e.preventDefault();
+
+    
   }
 
   async loadCountries() {
