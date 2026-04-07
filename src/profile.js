@@ -1,6 +1,7 @@
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { doc, getDoc, updateDoc } from "firebase/firestore";
+import { doc, getDoc, updateDoc, collection, getDocs,} from "firebase/firestore";
 import { auth, db } from "./firebaseConfig.js";
+
 
 // -------------------------------------------------------------
 // Function to populate user info in the profile form
@@ -25,12 +26,13 @@ function populateUserInfo() {
           const userData = userSnap.data();
     
           //extract the fields
-					const { name = "", school = "", country = "" } = userData;
+					const { name = "", email = ""} = userData;
 
           //update the DOM elements with fields
 					document.getElementById("nameInput").value = name;
-					document.getElementById("schoolInput").value = school;
-					document.getElementById("countryInput").value = country;
+          document.getElementById("emailInput").innerHTML = email;
+					// document.getElementById("schoolInput").value = school;
+					// document.getElementById("countryInput").value = country;
         } else {
           console.log("No such document!");
         }
@@ -70,10 +72,10 @@ async function saveUserInfo() {
 
      //a) get user entered values
     const userName = document.getElementById('nameInput').value;       //get the value of the field with id="nameInput"
-    const userSchool = document.getElementById('schoolInput').value;     //get the value of the field with id="schoolInput"
-    const userCountry = document.getElementById('countryInput').value;       //get the value of the field with id="cityInput"
+    // const userSchool = document.getElementById('schoolInput').value;     //get the value of the field with id="schoolInput"
+    // const userCountry = document.getElementById('countryInput').value;       //get the value of the field with id="cityInput"
      //b) update user's document in Firestore
-    await updateUserDocument(user.uid, userName, userSchool, userCountry); 
+    await updateUserDocument(user.uid, userName); 
      //c) disable edit 
      document.getElementById('personalInfoFields').disabled = true;
 }
@@ -84,12 +86,95 @@ async function saveUserInfo() {
 //   uid (string)  – user’s UID
 //   name, school, city (strings)
 //-------------------------------------------------------------
-async function updateUserDocument(uid, name, school, country) {
+async function updateUserDocument(uid, name) {
   try {
     const userRef = doc(db, "users", uid);
-    await updateDoc(userRef, { name, school, country });
+    await updateDoc(userRef, { name });
     console.log("User document successfully updated!");
   } catch (error) {
     console.error("Error updating user document:", error);
   }
 }
+
+
+
+
+async function displayCreatedWatchParties() {
+  let watchPartyTemplate = document.getElementById("watchPartyTemplate");
+  const container = document.getElementById("created-watch-parties");
+  const watchPartyCollectionRef = collection(db, "watch_parties");
+
+  try {
+    const querySnapshot = await getDocs(watchPartyCollectionRef);
+    container.innerHTML = "";
+    querySnapshot.forEach((doc) => {
+      // Clone the template
+      let newParty = watchPartyTemplate.content.cloneNode(true);
+      // Get watch party data once
+      const party = doc.data();
+
+      // Populate the card with watch party data
+      newParty.querySelector(".host").textContent = party.host;
+      newParty.querySelector(".partyType").textContent = party.partyType;
+      newParty.querySelector(".address").textContent = party.address;
+      newParty.querySelector(".team1").textContent = party.team1;
+      newParty.querySelector(".team2").textContent = party.team2;
+      newParty.querySelector(".time").textContent = party.time;
+
+      const cardContainer = newParty.querySelector(".party-card-trigger");
+      cardContainer.addEventListener("click", () => {
+      document.getElementById("modalHost").textContent = party.host;
+        document.getElementById("modalTeams").textContent = `${party.team1} VS ${party.team2}`;
+        document.getElementById("modalAddress").textContent = party.address;
+        document.getElementById("modalTime").textContent = party.time;
+      });
+
+      // Attach the new party to the container
+      document.getElementById("created-watch-parties").appendChild(newParty);
+    });
+  } catch (error) {
+    console.error("Error getting documents: ", error);
+  }
+}
+
+async function displaySavedWatchParties() {
+  let watchPartyTemplate = document.getElementById("watchPartyTemplate");
+  const container = document.getElementById("saved-watch-parties");
+  const watchPartyCollectionRef = collection(db, "watch_parties");
+
+  try {
+    const querySnapshot = await getDocs(watchPartyCollectionRef);
+    container.innerHTML = "";
+    querySnapshot.forEach((doc) => {
+      // Clone the template
+      let newParty = watchPartyTemplate.content.cloneNode(true);
+      // Get watch party data once
+      const party = doc.data();
+
+      // Populate the card with watch party data
+      newParty.querySelector(".host").textContent = party.host;
+      newParty.querySelector(".partyType").textContent = party.partyType;
+      newParty.querySelector(".address").textContent = party.address;
+      newParty.querySelector(".team1").textContent = party.team1;
+      newParty.querySelector(".team2").textContent = party.team2;
+      newParty.querySelector(".time").textContent = party.time;
+
+      const cardContainer = newParty.querySelector(".party-card-trigger");
+      cardContainer.addEventListener("click", () => {
+      document.getElementById("modalHost").textContent = party.host;
+        document.getElementById("modalTeams").textContent = `${party.team1} VS ${party.team2}`;
+        document.getElementById("modalAddress").textContent = party.address;
+        document.getElementById("modalTime").textContent = party.time;
+      });
+
+      // Attach the new party to the container
+      document.getElementById("saved-watch-parties").appendChild(newParty);
+    });
+  } catch (error) {
+    console.error("Error getting documents: ", error);
+  }
+}
+
+// Call the function to display watch parties when the page loads
+displayCreatedWatchParties();
+displaySavedWatchParties();

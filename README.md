@@ -1,4 +1,5 @@
-# Elmo Hikes
+# World watch
+map install: npm i maplibre-gl
 
 ## Overview
 

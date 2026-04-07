@@ -6,6 +6,13 @@ class SiteFilterButton extends HTMLElement {
     super();
     this.renderFilterButton();
     this.loadCountries();
+
+    this.addEventListener("submit", (e) => {
+      if (e.target.id === "filterForm") {
+        e.preventDefault();
+        this.handleFilterSubmit(e) ;
+      }
+    })
   }
 
   renderFilterButton() {
@@ -32,6 +39,29 @@ class SiteFilterButton extends HTMLElement {
         </div>
       </div>
     `;
+
+    const form = this.querySelector("filterForm") ;
+    // form.addEventListener("submit", (e) => this.handleFilterSubmit(e)) ;
+  }
+
+  handleFilterSubmit(e) {
+    e.preventDefault();
+
+    const filterFlag = this.querySelectorAll(".country-filter:checked");
+
+    const selectedFlags = Array.from(filterFlag).map(cb => cb.value) ;
+
+    const filterEvent = new CustomEvent("filterChanged", {
+      detail: { countries: selectedFlags },
+      bubbles: true,
+      composed: true
+    });
+
+    this.dispatchEvent(filterEvent);
+
+    const dropdownElement = this.querySelector('.filter-button');
+    const modal = bootstrap.Dropdown.getInstance(dropdownElement);
+    if (modal) modal.hide();
   }
 
   async loadCountries() {

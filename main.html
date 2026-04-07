@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>main</title>
+    <title>World Watch</title>
     <meta name="comp1800 template" content="My 1800 App" />
     <link rel="icon" type="image/x-icon" href="/images/WWicon.png">
+
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 
     <!-- Required meta tags -->
     <meta charset="utf-8" />
@@ -30,14 +35,14 @@
     <site-navbar></site-navbar>
 
     <!-- Stuff for body goes here -->
-    <main class="">
-      <div class="container-fluid bg-light text-dark p-5 mb-3" style="background: url('./images/WWhero.webp')">
+    <main class="bg-light">
+      <div class="container bg-slate-300 text-dark p-5 mb-3" style="width: 100vw; height: 700px; background: url('./images/WWhero.jpg')">
         <div class="container p-5">
           <h1 class="display-4 text-white">
-            Good morning, <span id="name-goes-here"></span>
+            Ready to Find the perfect watch Party <span id="name-goes-here"></span>?
           </h1>
         <p class="display-6 text-white p-3">Watch your way</p>
-        <a class="btn btn-outline-primary p-3" href="index.html">Find your perfect watch party >></a>
+        <a class="btn btn-primary p-3" href="index.html">Find your perfect watch party >></a>
         </div>
       </div>
 
@@ -91,33 +96,25 @@
 
       <div class="container m-5 bg-light rounded mx-auto">
         <h1>Newest Watch parties</h1>
-        <div class="row p-3">
+        <div class="row flex-row flex-nowrap">
           <div class="col-sm p-2">
-            <img class="rounded-top" src="./images/AM01.jpg" height="200px">
-          </div>
-          <div class="col-sm p-2">
-            <img class="rounded-top" src="./images/AM01.jpg" height="200px">
-          </div>
-          <div class="col-sm p-2">
-            <img class="rounded-top" src="./images/AM01.jpg" height="200px">
+            <site-party-list-items></site-party-list-items>
+            <div id="new-watch-parties" id="main-carousel" class="p-4 row flex-row flex-nowrap" style="overflow: auto; white-space: nowrap;"></div>
           </div>
         </div>
       </div>
 
+
       <div class="container m-5 bg-light rounded mx-auto">
         <h1>Upcoming Watch parties</h1>
-        <div class="row p-3">
+        <div class="row flex-row flex-nowrap">
           <div class="col-sm p-2">
-            <img class="rounded-top" src="./images/AM01.jpg" height="200px">
-          </div>
-          <div class="col-sm p-2">
-            <img class="rounded-top" src="./images/AM01.jpg" height="200px">
-          </div>
-          <div class="col-sm p-2">
-            <img class="rounded-top" src="./images/AM01.jpg" height="200px">
+            <site-party-list-items></site-party-list-items>
+            <div id="upcoming-watch-parties" id="main-carousel" class="p-4 row flex-row flex-nowrap" style="overflow: auto; white-space: nowrap;"></div>
           </div>
         </div>
       </div>
+
       <!-- <site-login-button></site-login-button> -->
     </main>
 
@@ -150,6 +147,6 @@
 
     <!-- Link to scripts of your own -->
     <script type="module" src="/src/app.js"></script>
-    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="/src/landing-main.js"></script>
   </body>
 </html>
