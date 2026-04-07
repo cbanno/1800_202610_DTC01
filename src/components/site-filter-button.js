@@ -6,6 +6,13 @@ class SiteFilterButton extends HTMLElement {
     super();
     this.renderFilterButton();
     this.loadCountries();
+
+    this.addEventListener("submit", (e) => {
+      if (e.target.id === "filterForm") {
+        e.preventDefault();
+        this.handleFilterSubmit(e) ;
+      }
+    })
   }
 
   renderFilterButton() {
@@ -34,7 +41,7 @@ class SiteFilterButton extends HTMLElement {
     `;
 
     const form = this.querySelector("filterForm") ;
-    form.addEventListener("submit", (e) => this.handleFilterSubmit(e)) ;
+    // form.addEventListener("submit", (e) => this.handleFilterSubmit(e)) ;
   }
 
   handleFilterSubmit(e) {
