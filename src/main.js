@@ -114,7 +114,7 @@ async function seedWatchParties() {
 // Call the seeding function when the main.html page loads.
 seedWatchParties();
 
-async function displayWatchParties() {
+async function displayWatchParties(filters = []) {
   let watchPartyTemplate = document.getElementById("watchPartyTemplate");
   const container = document.getElementById("watch-parties");
   const watchPartyCollectionRef = collection(db, "watch_parties");
@@ -124,11 +124,17 @@ async function displayWatchParties() {
     container.innerHTML = "";
     querySnapshot.forEach((doc) => {
       // Clone the template
-      let newParty = watchPartyTemplate.content.cloneNode(true);
       // Get watch party data once
       const party = doc.data();
 
+      //Filter logic
+      if (filters.length > 0) {
+        const filterMatch = filters.includes(party.team1) || filters.includes(party.team2) ;
+        if (!filterMatch) return ;
+      }
+      
       // Populate the card with watch party data
+      let newParty = watchPartyTemplate.content.cloneNode(true);
       newParty.querySelector(".host").textContent = party.host;
       newParty.querySelector(".partyType").textContent = party.partyType;
       newParty.querySelector(".address").textContent = party.address;
@@ -152,5 +158,12 @@ async function displayWatchParties() {
   }
 }
 
-// Call the function to display watch parties when the page loads
 displayWatchParties();
+
+//Listener for the change of filters from web component
+document.addEventListener("filterEdit", (event) => {
+  const selectedFlags = event.detail.countries;
+  console.log("Applying filter for: ", selectedFlags);
+
+  displayWatchParties(selectedFlags);
+})

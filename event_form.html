@@ -1,9 +1,9 @@
 <!doctype html>
 <html lang="en">
-    <head>
-    <title>Event Creation - World Watch</title>
+  <head>
+    <title>Event Creation</title>
     <meta name="comp1800 template" content="My 1800 App" />
-    <link rel="icon" type="image/x-icon" href="/images/WWicon.png">
+    <link rel="icon" type="image/x-icon" href="/images/WWicon.png" />
 
     <!-- Required meta tags -->
     <meta charset="utf-8" />
@@ -16,105 +16,131 @@
     <script type="module" src="/src/components/site-login-button.js"></script>
 
     <!-- Other libraries go here -->
-    </head>
+  </head>
 
-    <body>
-
-
+  <body>
     <!-- navbar goes here -->
     <site-navbar></site-navbar>
 
     <main>
-    <!-- Event Creation -->
-     <br>
-     <br>
-    <div id="eventCreate" class="mx-auto" style="width: 368px;">
-        <h3 class="mb-3 text-center">Enter the details of your Watch Party!</h3>
+      <!-- Event Creation -->
+      <div id="eventCreate" class="mx-auto" style="width: 368px">
+        <h3 class="mb-3 p-4 text-center">
+          Enter the details of your Watch Party!
+        </h3>
         <form id="eventForm" novalidate class="">
+          <div class="mb-3">
+            <input
+              type="text"
+              id="eventName"
+              class="form-control"
+              placeholder="Name your watch party!"
+              aria-label="Venue"
+              required
+            />
+          </div>
+          <div id="addressStatus" class="alert d-none" role="alert"></div>
+          <div class="mb-3">
+            <input
+              type="text"
+              id="eventAddress"
+              class="form-control"
+              placeholder="Street Address (ex. 3700 Willingdon)"
+              aria-label="Address"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <input
+              id="eventPostalCode"
+              type="text"
+              class="form-control"
+              placeholder="Postal Code (ex. V5G 3H2)"
+            />
+          </div>
+          <div class="d-flex justify-content-between align-items-center">
             <div class="mb-3">
-                <input
-                    type="text"
-                    id="eventHost"
-                    class="form-control"
-                    placeholder="Name of Venue"
-                    aria-label="Venue"
-                    required
-                />
+              <select class="form-select" id="team1"></select>
             </div>
+            <p>VS.</p>
             <div class="mb-3">
-                <input
-                    type="text"
-                    id="eventAddress"
-                    class="form-control"
-                    placeholder="Address"
-                    aria-label="Address"
-                    required
-                />
+              <select class="form-select" id="team2"></select>
             </div>
-            <div class="mb-3">
-                <input
-                    type="text"
-                    id="team1"
-                    class="form-control"
-                    placeholder="Home Team"
-                    required
-                />
-            </div><div class="mb-3">
-                <input
-                    type="text"
-                    id="team2"
-                    class="form-control"
-                    placeholder="Away Team"
-                    required
-                />
+          </div>
+          <div class="input-group mb-3 d-flex align-items-center">
+            <label for="eventDate" class="pe-2">Party Date:</label>
+            <input type="date" id="eventDate" class="form-control" required />
+          </div>
+          <div class="input-group mb-3 d-flex align-items-center">
+            <label for="eventStartTimeHour" class="pe-2">Party Start:</label>
+            <select class="form-select" id="eventStartTimeHour" required>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7" selected>7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+            </select>
+            <select class="form-select" id="eventStartTimeMinute" required>
+              <option value="00" selected>00</option>
+              <option value="15">15</option>
+              <option value="30">30</option>
+              <option value="45">45</option>
+            </select>
+            <select class="form-select" id="eventStartAMPM" required>
+              <option value="AM">AM</option>
+              <option value="PM" selected>PM</option>
+            </select>
+          </div>
+          <div class="input-group mb-3 d-flex align-items-center">
+            <label for="eventEndTimeHour" class="pe-3">Party End:</label>
+            <select class="form-select" id="eventEndTimeHour" required>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10" selected>10</option>
+              <option value="11">11</option>
+            </select>
+            <select class="form-select" id="eventEndTimeMinute" required>
+              <option value="00" selected>00</option>
+              <option value="15">15</option>
+              <option value="30">30</option>
+              <option value="45">45</option>
+            </select>
+            <select class="form-select" id="eventEndAMPM" required>
+              <option value="AM">AM</option>
+              <option value="PM" selected>PM</option>
+            </select>
+          </div>
+          <div class="d-flex flex-row gap-3 mb-3">
+            <select class="form-select" id="partyType" required>
+              <option value="Public">Public</option>
+              <option value="Private">Private</option>
+            </select>
+            <div class="d-flex align-items-center partyTypePopup">
+              <img src="images/help.svg" height="26px" />
+              <span class="partyTypePopupText"
+                >Public venue or a private residence?</span
+              >
             </div>
-            <div class="input-group mb-3" style="width: 250px">
-                <!-- <input
-                    type="text"
-                    id="eventTime"
-                    class="form-control"
-                    placeholder="Start time of Watch Party"
-                    required
-                /> -->
-                <select class="form-select" id="eventTimeHour" required>
-                    <option selected>Hour</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                </select>
-                <select class="form-select" id="eventTimeMinute" required>
-                    <option selected>Minute</option>
-                    <option value="00">00</option>
-                    <option value="15">15</option>
-                    <option value="30">30</option>
-                    <option value="45">45</option>
-                </select>
-                <select class="form-select" id="eventAMPM" required>
-                    <option value="AM">AM</option>
-                    <option value="PM">PM</option>
-                </select>
-            </div>
-            <div class="d-flex flex-row gap-3 mb-3">
-                <select class="form-select" id="partyType" required>
-                    <option value="Public">Public</option>
-                    <option value="Hosted">Hosted</option>
-                    <option value="Official">Official</option>
-                </select>
-            </div>
-            <button type="submit" class="btn btn-primary w-100">
+          </div>
+          <button type="submit" class="btn btn-primary w-100">
             Create Event
-            </button>
+          </button>
         </form>
-    </div>
-</main>
+      </div>
+    </main>
 
     <!-- footer goes here -->
     <site-footer></site-footer>
@@ -126,5 +152,5 @@
     <!-- Link to scripts of your own -->
     <script type="module" src="/src/app.js"></script>
     <!-- <script type="module" src="/src/main.js"></script> -->
-    </body>
+  </body>
 </html>
