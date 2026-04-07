@@ -140,9 +140,22 @@ h3 {
   }
 }
 
+#bottom-nav {
+  visibility: hidden;
+}
+#responsive-sidebar {
+  display: block;
+}
+
 @media (max-width: 768px) {
   h3 {
     visibility: hidden;
     font-size: 0;
+  }
+  #bottom-nav {
+    visibility: visible;
+  }
+  #responsive-sidebar {
+    display: none;
   }
 }
