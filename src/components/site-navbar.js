@@ -35,9 +35,11 @@ class SiteNavbar extends HTMLElement {
                     </div>
 
                     <div class="d-flex flex-row gap-2">
+                    <!--
                         <div class="search d-flex align-items-center">
                             <input class="rounded container" placeholder="Search...">
                         </div>
+                    -->
                         <a href="account.html"><img src="../../images/profile.png" height="50px" width="50px"></a>
                     </div>
                 </div>

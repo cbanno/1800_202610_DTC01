@@ -98,7 +98,7 @@ h3 {
   position: absolute;
   z-index: 1;
   bottom: 125%;
-  left: 50%;
+  left: -205%;
   margin-left: -80px;
 }
 
@@ -107,7 +107,7 @@ h3 {
   content: "";
   position: absolute;
   top: 100%;
-  left: 50%;
+  left: 92%;
   margin-left: -5px;
   border-width: 5px;
   border-style: solid;
