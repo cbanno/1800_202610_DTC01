@@ -15,7 +15,7 @@ class SitePartyListItems extends HTMLElement {
               <span class="host fw-semibold"></span>
             </div>
             <span class="address text-muted small" style="word-break: break-word;"></span>
-            <span class="partyType small text-muted"></span>
+            <span class="partyType small text-muted fw-semibold"></span>
           </div>
 
           <!-- Middle: teams + time -->
