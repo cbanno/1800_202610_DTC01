@@ -11,17 +11,17 @@ class SitePartyListItems extends HTMLElement {
 
           <!-- Left: host + address -->
           <div class="d-flex flex-column" style="flex: 2; min-width: 0;">
-            <div class="text-truncate">
+            <div style="word-break: break-word; font-size: clamp(0.7rem, 2vw, 1rem);">
               <span class="host fw-semibold"></span>
               (<span class="partyType"></span>)
             </div>
-            <span class="address text-muted small text-truncate"></span>
+            <span class="address text-muted small" style="word-break: break-word;"></span>
             <span class="small text-muted">17.4 km away</span>
           </div>
 
           <!-- Middle: teams + time -->
           <div class="d-flex flex-column justify-content-center align-items-center text-center" style="flex: 1; min-width: 0;">
-            <div class="text-truncate w-100">
+            <div style="word-break: break-word; font-size: clamp(0.7rem, 2vw, 1rem);">
               <span class="team1"></span> VS. <span class="team2"></span>
             </div>
             <span class="time small text-muted"></span>
