@@ -71,6 +71,7 @@ async function displayNewWatchParties() {
 
       if (formatted > party.eventDate) {
         await deleteDoc(docSnap.ref);
+        console.log("deleted an old watch party")
       }
     } 
 
