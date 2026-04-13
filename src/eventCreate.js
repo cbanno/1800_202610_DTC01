@@ -8,8 +8,24 @@ import {
   Timestamp,
   serverTimestamp,
 } from "firebase/firestore";
+import { onAuthReady } from "./authentication.js";
 
 const GEOAPIFY_API_KEY = import.meta.env.VITE_GEOAPIFY_API_KEY;
+
+async function redirectNonLoggedIn() {
+  
+  onAuthReady(async (user) => {
+    // If no user is logged in, redirect to the login page
+    let location_checker = location.href.split("/")[3];
+    const page_to_redirect = ["account.html", "event_form.html"];
+    if (!user && page_to_redirect.includes(location_checker)) {
+      location.href = "login.html";
+      return; // Stop execution
+    }
+  })
+}
+
+redirectNonLoggedIn()
 
 async function loadCountries() {
   const team1Dropdown = document.getElementById("team1");
@@ -161,17 +177,6 @@ function partyTypeHelp() {
 }
 
 
-async function redirectNonLoggedIn(user) {
-  let location_checker = location.href.split("/")[3];
-      console.log(location_checker)
-      const page_to_redirect = ["account.html", "event_form.html"];
-      if (!user && page_to_redirect.includes(location_checker)) {
-        location.href = "login.html";
-        return; // Stop execution
-      }
-}
-
-redirectNonLoggedIn()
 
 loadCountries();
 document

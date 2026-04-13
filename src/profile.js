@@ -1,6 +1,7 @@
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc, updateDoc, collection, getDocs,} from "firebase/firestore";
 import { auth, db } from "./firebaseConfig.js";
+import { onAuthReady } from "./authentication.js";
 
 
 // -------------------------------------------------------------
@@ -12,6 +13,21 @@ import { auth, db } from "./firebaseConfig.js";
 // Fields populated: name, school, country
 // Form field IDs: nameInput, schoolInput, countryInput
 // -------------------------------------------------------------
+async function redirectNonLoggedIn() {
+  
+  onAuthReady(async (user) => {
+    // If no user is logged in, redirect to the login page
+    let location_checker = location.href.split("/")[3];
+    const page_to_redirect = ["account.html", "event_form.html"];
+    if (!user && page_to_redirect.includes(location_checker)) {
+      location.href = "login.html";
+      return; // Stop execution
+    }
+  })
+}
+
+redirectNonLoggedIn()
+
 function populateUserInfo() {
   onAuthStateChanged(auth, async (user) => {
     if (user) {       
@@ -176,17 +192,7 @@ async function displaySavedWatchParties() {
   }
 }
 
-async function redirectNonLoggedIn(user) {
-  let location_checker = location.href.split("/")[3];
-      console.log(location_checker)
-      const page_to_redirect = ["account.html", "event_form.html"];
-      if (!user && page_to_redirect.includes(location_checker)) {
-        location.href = "login.html";
-        return; // Stop execution
-      }
-}
 
-redirectNonLoggedIn()
 
 
 // Call the function to display watch parties when the page loads
