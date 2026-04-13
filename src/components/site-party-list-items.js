@@ -11,7 +11,7 @@ class SitePartyListItems extends HTMLElement {
 
           <!-- Left: host + address -->
           <div class="d-flex flex-column" style="flex: 2; min-width: 0;">
-            <div style="word-break: break-word; font-size: clamp(0.7rem, 2vw, 1rem);">
+            <div style="word-break: break-word; font-size: 1.1rem clamp(0.7rem, 2vw, 1rem);">
               <span class="host fw-semibold"></span>
             </div>
             <span class="address text-muted small" style="word-break: break-word;"></span>
