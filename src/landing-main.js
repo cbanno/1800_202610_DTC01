@@ -98,7 +98,7 @@ async function displayUpcomingWatchParties() {
   const watchPartyCollectionRef = collection(db, "watch_parties");
 
   try {
-    let results = query(collection(db, "watch_parties"), orderBy("createdAt"));
+    let results = query(collection(db, "watch_parties"), orderBy("eventDate"));
     const querySnapshot = await getDocs(results);
     // const querySnapshot = await getDocs(watchPartyCollectionRef);
     container.innerHTML = "";
