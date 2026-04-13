@@ -2,37 +2,43 @@ class SitePartyListItems extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
             <!-- component: party-list-item -->
-            <template id="watchPartyTemplate">
-              <div class="card mb-3 party-card-trigger mx-auto" id="watch-party-item"
-                  style="cursor: pointer;" 
-                  data-bs-toggle="modal" 
-                  data-bs-target="#partyModal">
-                <div class="card-body d-flex justify-content-between">
-                  <div class="d-flex flex-column">
-                    <div class="flex">
-                      <span class="host"></span> (<span class="partyType"></span>)
-                    </div>
-                    <span class="address"></span>
-                    <br />
-                    <span>17.4 km away</span>
-                  </div>
-                  <div class="d-flex flex-column justify-content-center align-items-center">
-                    <div>
-                      <span class="team1"></span> VS. <span class="team2"></span>
-                    </div>
-                    <span class="time"></span>
-                  </div>
-                  <div class="d-flex justify-content-center align-items-center">
-                    <div class="border border-dark-subtle">
-                      <img
-                        src="images/sadia-afreen-0ff2wEWSeTA-unsplash.jpg"
-                        class="card-image"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </template>
+      <template id="watchPartyTemplate">
+        <div class="card mb-3 party-card-trigger mx-auto"
+          style="cursor: pointer;" 
+          data-bs-toggle="modal" 
+          data-bs-target="#partyModal">
+        <div class="card-body d-flex justify-content-between align-items-center gap-2">
+
+          <!-- Left: host + address -->
+          <div class="d-flex flex-column" style="flex: 2; min-width: 0;">
+            <div class="text-truncate">
+              <span class="host fw-semibold"></span>
+              (<span class="partyType"></span>)
+            </div>
+            <span class="address text-muted small text-truncate"></span>
+            <span class="small text-muted">17.4 km away</span>
+          </div>
+
+          <!-- Middle: teams + time -->
+          <div class="d-flex flex-column justify-content-center align-items-center text-center" style="flex: 1; min-width: 0;">
+            <div class="text-truncate w-100">
+              <span class="team1"></span> VS. <span class="team2"></span>
+            </div>
+            <span class="time small text-muted"></span>
+          </div>
+
+          <!-- Right: image -->
+          <div class="d-flex justify-content-center align-items-center" style="flex: 0 0 auto;">
+            <div class="border border-dark-subtle">
+              <img src="images/sadia-afreen-0ff2wEWSeTA-unsplash.jpg" class="card-image" />
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </template>
+
+    <!-- modal s
             
             <div class="modal fade" id="partyModal" tabindex="-1" aria-labelledby="partyModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
