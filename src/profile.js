@@ -1,5 +1,5 @@
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { doc, getDoc, updateDoc, collection, getDocs, where, query } from "firebase/firestore";
+import { doc, getDoc, updateDoc, collection, getDocs, where, query, deleteDoc } from "firebase/firestore";
 import { auth, db } from "./firebaseConfig.js";
 import { onAuthReady } from "./authentication.js";
 

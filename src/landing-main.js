@@ -9,7 +9,8 @@ import {
   addDoc,
   serverTimestamp,
   query,
-  orderBy
+  orderBy,
+  deleteDoc
 } from "firebase/firestore";
 
 // Function to fetch the signed-in user's name and display it in the UI
@@ -53,11 +54,11 @@ showName();
 async function displayNewWatchParties() {
   let watchPartyTemplate = document.getElementById("watchPartyTemplate");
   const container = document.getElementById("new-watch-parties");
-  // const watchPartyCollectionRef = collection(db, "watch_parties");
+  const deleteref = collection(db, "watch_parties");
   // const q = query(collection(db, "watch_parties"), where("last_updated", ">", "timeformat"))
   try {
     //parse deleting all outdated watch parties
-    const deleteSnapshot = await getDocs(watchPartyCollectionRef);
+    const deleteSnapshot = await getDocs(deleteref);
     container.innerHTML = "";
 
     const today = new Date();
@@ -73,7 +74,7 @@ async function displayNewWatchParties() {
       }
     } 
 
-    
+
     let results = query(collection(db, "watch_parties"), orderBy("createdAt"));
     const querySnapshot = await getDocs(results);
     // console.log(querySnapshot)
