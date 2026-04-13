@@ -114,6 +114,14 @@ async function seedWatchParties() {
 // Call the seeding function when the main.html page loads.
 seedWatchParties();
 
+//for fetch and cache
+let allParties = [];
+
+async function loadParties(){
+  const current = await getDocs(collection(db, "watch_parties"));
+  allParties = current.docs.map(doc => doc.data());
+}
+
 async function displayWatchParties(filters = []) {
   let watchPartyTemplate = document.getElementById("watchPartyTemplate");
   const container = document.getElementById("watch-parties");
