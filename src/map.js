@@ -184,7 +184,7 @@ async function showWatchParties(map) {
     let partyType = party.partyType;
     let partyColour;
 
-    if (partyType === "hosted") {
+    if (partyType === "Private") {
       partyColour = "images/party-private.png";
     } else {
       partyColour = "images/party-public.png";
