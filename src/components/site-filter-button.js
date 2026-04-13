@@ -12,7 +12,41 @@ class SiteFilterButton extends HTMLElement {
         e.preventDefault();
         this.handleFilterSubmit(e) ;
       }
-    })
+    });
+
+    this.addEventListener("reset", (e) => {
+      if (e.target.id === "filterForm") {
+        this.dispatchEvent(new CustomEvent("filterUpdate", {
+          detail: {countries: []},
+          bubbles: true,
+          composed: true
+        })) ;
+
+        this.closeDropdown();
+      }
+    });
+  }
+
+  closeDropdown() {
+    const btn = this.querySelector('.filter-button');
+    const instance = bootstrap.Dropdown.getInstance(btn);
+    if (instance) instance.hide() ;
+  }
+
+  handleFilterSubmit(e) {
+    e.preventDefault();
+
+    const filterFlag = this.querySelectorAll(".country-filter:checked");
+
+    const selectedFlags = Array.from(filterFlag).map(cb => cb.value) ;
+
+    const filterEvent = new CustomEvent("filterChanged", {
+      detail: { countries: selectedFlags },
+      bubbles: true,
+      composed: true
+    });
+
+    this.closeDropdown();
   }
 
   renderFilterButton() {
@@ -40,28 +74,6 @@ class SiteFilterButton extends HTMLElement {
       </div>
     `;
 
-    const form = this.querySelector("filterForm") ;
-    // form.addEventListener("submit", (e) => this.handleFilterSubmit(e)) ;
-  }
-
-  handleFilterSubmit(e) {
-    e.preventDefault();
-
-    const filterFlag = this.querySelectorAll(".country-filter:checked");
-
-    const selectedFlags = Array.from(filterFlag).map(cb => cb.value) ;
-
-    const filterEvent = new CustomEvent("filterChanged", {
-      detail: { countries: selectedFlags },
-      bubbles: true,
-      composed: true
-    });
-
-    this.dispatchEvent(filterEvent);
-
-    const dropdownElement = this.querySelector('.filter-button');
-    const modal = bootstrap.Dropdown.getInstance(dropdownElement);
-    if (modal) modal.hide();
   }
 
   async loadCountries() {
