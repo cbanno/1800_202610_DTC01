@@ -56,6 +56,24 @@ async function displayNewWatchParties() {
   // const watchPartyCollectionRef = collection(db, "watch_parties");
   // const q = query(collection(db, "watch_parties"), where("last_updated", ">", "timeformat"))
   try {
+    //parse deleting all outdated watch parties
+    const deleteSnapshot = await getDocs(watchPartyCollectionRef);
+    container.innerHTML = "";
+
+    const today = new Date();
+    const formatted = today.getFullYear() + '-' +
+    String(today.getMonth() + 1).padStart(2, '0') + '-' +
+    String(today.getDate()).padStart(2, '0');
+
+    for (const docSnap of deleteSnapshot.docs) {
+      const party = docSnap.data();
+
+      if (formatted > party.eventDate) {
+        await deleteDoc(docSnap.ref);
+      }
+    } 
+
+    
     let results = query(collection(db, "watch_parties"), orderBy("createdAt"));
     const querySnapshot = await getDocs(results);
     // console.log(querySnapshot)

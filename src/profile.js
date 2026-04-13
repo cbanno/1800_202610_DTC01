@@ -126,11 +126,29 @@ async function displayCreatedWatchParties() {
 
 
   try {
-  const query_ref = query(watchPartyCollectionRef, where("createdBy", "==", `${auth.currentUser.uid}`))
-  const querySnapshot = await getDocs(query_ref);
+    //parse deleting all outdated watch parties
+    const deleteSnapshot = await getDocs(watchPartyCollectionRef);
+    container.innerHTML = "";
+
+    const today = new Date();
+    const formatted = today.getFullYear() + '-' +
+    String(today.getMonth() + 1).padStart(2, '0') + '-' +
+    String(today.getDate()).padStart(2, '0');
+
+    for (const docSnap of deleteSnapshot.docs) {
+      const party = docSnap.data();
+
+      if (formatted > party.eventDate) {
+        await deleteDoc(docSnap.ref);
+      }
+    } 
+
+    const query_ref = query(watchPartyCollectionRef, where("createdBy", "==", `${auth.currentUser.uid}`))
+    const querySnapshot = await getDocs(query_ref);
     
     // const querySnapshot = await getDocs(watchPartyCollectionRef);
     container.innerHTML = "";
+  
     querySnapshot.forEach((doc) => {
       // Clone the template
       let newParty = watchPartyTemplate.content.cloneNode(true);

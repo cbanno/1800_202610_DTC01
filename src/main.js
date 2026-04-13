@@ -7,6 +7,7 @@ import {
   collection,
   getDocs,
   addDoc,
+  deleteDoc,
   serverTimestamp,
 } from "firebase/firestore";
 
@@ -122,6 +123,20 @@ async function displayWatchParties(filters = []) {
   try {
     const querySnapshot = await getDocs(watchPartyCollectionRef);
     container.innerHTML = "";
+
+    const today = new Date();
+    const formatted = today.getFullYear() + '-' +
+    String(today.getMonth() + 1).padStart(2, '0') + '-' +
+    String(today.getDate()).padStart(2, '0');
+
+    for (const docSnap of querySnapshot.docs) {
+      const party = docSnap.data();
+
+      if (formatted > party.eventDate) {
+        await deleteDoc(docSnap.ref);
+      }
+    } 
+
     querySnapshot.forEach((doc) => {
       // Clone the template
       // Get watch party data once
