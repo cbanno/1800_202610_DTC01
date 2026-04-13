@@ -14,7 +14,7 @@ import { auth, db } from "./firebaseConfig.js";
 // -------------------------------------------------------------
 function populateUserInfo() {
   onAuthStateChanged(auth, async (user) => {
-    if (user) {
+    if (user) {       
       try {
         // reference to the user document
         const userRef = doc(db, "users", user.uid);
@@ -44,6 +44,7 @@ function populateUserInfo() {
     }
   });
 }
+
 
 //call the function to run it 
 populateUserInfo();
@@ -174,6 +175,19 @@ async function displaySavedWatchParties() {
     console.error("Error getting documents: ", error);
   }
 }
+
+async function redirectNonLoggedIn(user) {
+  let location_checker = location.href.split("/")[3];
+      console.log(location_checker)
+      const page_to_redirect = ["account.html", "event_form.html"];
+      if (!user && page_to_redirect.includes(location_checker)) {
+        location.href = "login.html";
+        return; // Stop execution
+      }
+}
+
+redirectNonLoggedIn()
+
 
 // Call the function to display watch parties when the page loads
 displayCreatedWatchParties();

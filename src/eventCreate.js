@@ -160,6 +160,19 @@ function partyTypeHelp() {
   popup.classList.toggle("show");
 }
 
+
+async function redirectNonLoggedIn(user) {
+  let location_checker = location.href.split("/")[3];
+      console.log(location_checker)
+      const page_to_redirect = ["account.html", "event_form.html"];
+      if (!user && page_to_redirect.includes(location_checker)) {
+        location.href = "login.html";
+        return; // Stop execution
+      }
+}
+
+redirectNonLoggedIn()
+
 loadCountries();
 document
   .querySelector(".partyTypePopup")
