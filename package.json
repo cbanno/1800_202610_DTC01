@@ -13,7 +13,7 @@
   "dependencies": {
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.8",
-    "firebase": "^12.10.0",
+    "firebase": "^12.12.0",
     "maplibre": "^0.0.1-security",
     "maplibre-gl": "^5.21.0"
   }
