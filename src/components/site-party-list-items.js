@@ -14,7 +14,7 @@ class SitePartyListItems extends HTMLElement {
             <div style="word-break: break-word; font-size: 1.1rem clamp(0.7rem, 2vw, 1rem);">
               <span class="host fw-semibold"></span>
             </div>
-            <span class="address text-muted small" style="word-break: break-word;"></span>
+            <span class="eventDate text-muted small" style="word-break: break-word;"></span>
             <span class="partyType small text-muted fw-semibold"></span>
           </div>
 
