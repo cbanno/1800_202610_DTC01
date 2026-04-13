@@ -22,16 +22,16 @@ class SiteFilterButton extends HTMLElement {
           <div class="dropstart">
             <button class="btn m-2 mt-0 filter-button" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside">
                 <img src="images/filter-list.svg" height="50px" width="40px" />
-            </button>
+             </button>
             <ul class="dropdown-menu p-3 site-filter-dropdown">
               <form id="filterForm">
-                <div id="countryList">
+                <div id="countryList" style="max-height: 250px; overflow-y: auto;">
                   <p class="text-muted small">Loading countries...</p>
                 </div>
                 <hr>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                   <button class="btn btn-sm btn-outline-secondary" type="reset">Clear</button>
-                  <button class="btn btn-sm btn-primary" type="submit">Confirm</button>
+                 <button class="btn btn-sm btn-primary" type="submit">Confirm</button>
                 </div>
               </form>
             </ul>
@@ -39,9 +39,6 @@ class SiteFilterButton extends HTMLElement {
         </div>
       </div>
     `;
-
-    const form = this.querySelector("filterForm") ;
-    // form.addEventListener("submit", (e) => this.handleFilterSubmit(e)) ;
   }
 
   handleFilterSubmit(e) {
@@ -51,7 +48,7 @@ class SiteFilterButton extends HTMLElement {
 
     const selectedFlags = Array.from(filterFlag).map(cb => cb.value) ;
 
-    const filterEvent = new CustomEvent("filterChanged", {
+    const filterEvent = new CustomEvent("filterEdit", {
       detail: { countries: selectedFlags },
       bubbles: true,
       composed: true
