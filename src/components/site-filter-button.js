@@ -99,7 +99,7 @@ class SiteFilterButton extends HTMLElement {
             <input type="checkbox" class="form-check-input country-filter" 
               id="filter-${doc.id}" value="${countryName}" data-group="${group}">
             <label class="form-check-label" for="filter-${doc.id}">
-              ${countryName} <span class="badge bg-light text-dark ms-1">${group}</span>
+              ${countryName} <span class="badge bg-light text-dark ms-1">Group ${group}</span>
             </label>
           </div>
         `;
