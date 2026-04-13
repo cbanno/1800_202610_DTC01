@@ -133,7 +133,7 @@ async function displayCreatedWatchParties() {
       // Populate the card with watch party data
       newParty.querySelector(".host").textContent = party.host;
       newParty.querySelector(".partyType").textContent = party.partyType;
-      newParty.querySelector(".address").textContent = party.address;
+      newParty.querySelector(".eventDate").textContent = party.eventDate;
       newParty.querySelector(".team1").textContent = party.team1;
       newParty.querySelector(".team2").textContent = party.team2;
       newParty.querySelector(".time").textContent = party.time;
@@ -171,7 +171,7 @@ async function displaySavedWatchParties() {
       // Populate the card with watch party data
       newParty.querySelector(".host").textContent = party.host;
       newParty.querySelector(".partyType").textContent = party.partyType;
-      newParty.querySelector(".address").textContent = party.address;
+      newParty.querySelector(".eventDate").textContent = party.eventDate;
       newParty.querySelector(".team1").textContent = party.team1;
       newParty.querySelector(".team2").textContent = party.team2;
       newParty.querySelector(".time").textContent = party.time;
