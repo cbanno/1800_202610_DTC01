@@ -22,15 +22,12 @@ class SitePartyModal extends HTMLElement {
             </div>
             <div class="modal-body">
               <h3 id="modalHost"></h3>
-              <p id="modalTeams" class="fw-bold"></p>
+              <h4 id="modalTeams" class="fw-bold"></h4>
               <p id="modalAddress"></p>
               <p id="modalTime"></p>
-              <hr>
-              <p>Placeholder Event Description</p>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-success">Join Party</button>
             </div>
           </div>
         </div>
