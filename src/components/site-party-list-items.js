@@ -13,10 +13,9 @@ class SitePartyListItems extends HTMLElement {
           <div class="d-flex flex-column" style="flex: 2; min-width: 0;">
             <div style="word-break: break-word; font-size: clamp(0.7rem, 2vw, 1rem);">
               <span class="host fw-semibold"></span>
-              (<span class="partyType"></span>)
             </div>
             <span class="address text-muted small" style="word-break: break-word;"></span>
-            <span class="small text-muted">17.4 km away</span>
+            <span class="partyType small text-muted"></span>
           </div>
 
           <!-- Middle: teams + time -->

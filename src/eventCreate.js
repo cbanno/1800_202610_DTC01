@@ -66,7 +66,7 @@ async function submitEvent(e) {
 
     const docRef = await addDoc(watchPartyRef, {
       address: formattedAddress,
-      eventName: eventName,
+      host: eventName,
       team1: team1,
       team2: team2,
       lat: lat,
