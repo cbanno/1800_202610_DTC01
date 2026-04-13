@@ -33,21 +33,6 @@ class SiteFilterButton extends HTMLElement {
     if (instance) instance.hide() ;
   }
 
-  handleFilterSubmit(e) {
-    e.preventDefault();
-
-    const filterFlag = this.querySelectorAll(".country-filter:checked");
-
-    const selectedFlags = Array.from(filterFlag).map(cb => cb.value) ;
-
-    const filterEvent = new CustomEvent("filterChanged", {
-      detail: { countries: selectedFlags },
-      bubbles: true,
-      composed: true
-    });
-
-    this.closeDropdown();
-  }
 
   renderFilterButton() {
     this.innerHTML = `
