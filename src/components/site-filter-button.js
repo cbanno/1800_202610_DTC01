@@ -51,7 +51,7 @@ class SiteFilterButton extends HTMLElement {
 
     const selectedFlags = Array.from(filterFlag).map(cb => cb.value) ;
 
-    const filterEvent = new CustomEvent("filterChanged", {
+    const filterEvent = new CustomEvent("filterEdit", {
       detail: { countries: selectedFlags },
       bubbles: true,
       composed: true
