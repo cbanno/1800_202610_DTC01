@@ -29,7 +29,7 @@ class SitePartyListItems extends HTMLElement {
           <!-- Right: image -->
           <div class="d-flex justify-content-center align-items-center" style="flex: 0 0 auto;">
             <div class="border border-dark-subtle">
-              <img src="images/sadia-afreen-0ff2wEWSeTA-unsplash.jpg" class="card-image" />
+              <img src="images/bicycleKick.png" class="card-image" />
             </div>
           </div>
 
