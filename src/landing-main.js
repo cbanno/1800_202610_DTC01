@@ -1,5 +1,5 @@
 import { onAuthReady } from "./authentication.js";
-import { db } from "./firebaseConfig.js";
+import { db, auth } from "./firebaseConfig.js";
 import {
   doc,
   onSnapshot,
@@ -8,6 +8,8 @@ import {
   getDocs,
   addDoc,
   serverTimestamp,
+  query,
+  orderBy
 } from "firebase/firestore";
 
 // Function to fetch the signed-in user's name and display it in the UI
@@ -51,10 +53,13 @@ showName();
 async function displayNewWatchParties() {
   let watchPartyTemplate = document.getElementById("watchPartyTemplate");
   const container = document.getElementById("new-watch-parties");
-  const watchPartyCollectionRef = collection(db, "watch_parties");
+  // const watchPartyCollectionRef = collection(db, "watch_parties");
   // const q = query(collection(db, "watch_parties"), where("last_updated", ">", "timeformat"))
   try {
-    const querySnapshot = await getDocs(watchPartyCollectionRef);
+    let results = query(collection(db, "watch_parties"), orderBy("createdAt"));
+    const querySnapshot = await getDocs(results);
+    // console.log(querySnapshot)
+    // const querySnapshot = await getDocs(watchPartyCollectionRef);
     container.innerHTML = "";
     querySnapshot.forEach((doc) => {
       // Clone the template
@@ -93,7 +98,9 @@ async function displayUpcomingWatchParties() {
   const watchPartyCollectionRef = collection(db, "watch_parties");
 
   try {
-    const querySnapshot = await getDocs(watchPartyCollectionRef);
+    let results = query(collection(db, "watch_parties"), orderBy("createdAt"));
+    const querySnapshot = await getDocs(results);
+    // const querySnapshot = await getDocs(watchPartyCollectionRef);
     container.innerHTML = "";
     querySnapshot.forEach((doc) => {
       // Clone the template
