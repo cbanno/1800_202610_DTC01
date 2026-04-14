@@ -19,9 +19,9 @@ class SitePartyListItems extends HTMLElement {
           </div>
 
           <!-- Middle: teams + time -->
-          <div class="d-flex flex-column justify-content-center align-items-center text-center" style="min-width: 0;">
-            <div class="d-flex flex-column" style="word-break: break-word; font-size: clamp(0.7rem, 2vw, 1rem);">
-              <span class="team1"></span> VS. <span class="team2"></span>
+          <div class="d-flex flex-column justify-content-center align-items-center text-end" style="min-width: 0;">
+            <div class="d-flex flex-column" style="word-break: break-word; font-size: 0.8rem">
+              <span class="team1 fw-semibold"></span> VS. <span class="team2 fw-semibold"></span>
             </div>
             <span class="time small text-muted"></span>
           </div>
