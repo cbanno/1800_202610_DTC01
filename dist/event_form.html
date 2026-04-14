@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Event Creation</title>
+    <meta name="comp1800 template" content="My 1800 App" />
+    <link rel="icon" type="image/x-icon" href="/assets/WWicon-EaGoDyNQ.png" />
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Web Components (src/components) -->
+
+    <!-- Other libraries go here -->
+    <script type="module" crossorigin src="/assets/event_form-COo58RgA.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/app-B_O6vh0-.js">
+    <link rel="modulepreload" crossorigin href="/assets/site-login-button-DYij8mxD.js">
+    <link rel="stylesheet" crossorigin href="/assets/app-Du6_jtVm.css">
+  </head>
+
+  <body>
+    <!-- navbar goes here -->
+    <site-navbar></site-navbar>
+
+    <main>
+      <!-- Event Creation -->
+      <div id="eventCreate" class="mx-auto" style="width: 368px">
+        <h3 class="mb-3 p-4 text-center">
+          Enter the details of your Watch Party!
+        </h3>
+        <form id="eventForm" novalidate class="">
+          <div class="mb-3">
+            <input
+              type="text"
+              id="eventName"
+              class="form-control"
+              placeholder="Name your watch party!"
+              aria-label="Venue"
+              required
+            />
+          </div>
+          <div id="addressStatus" class="alert d-none" role="alert"></div>
+          <div class="mb-3">
+            <input
+              type="text"
+              id="eventAddress"
+              class="form-control"
+              placeholder="Street Address (ex. 3700 Willingdon)"
+              aria-label="Address"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <input
+              id="eventPostalCode"
+              type="text"
+              class="form-control"
+              placeholder="Postal Code (ex. V5G 3H2)"
+            />
+          </div>
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="mb-3">
+              <select class="form-select" id="team1"></select>
+            </div>
+            <p class="p-2">VS.</p>
+            <div class="mb-3">
+              <select class="form-select" id="team2"></select>
+            </div>
+          </div>
+          <div class="input-group mb-3 d-flex align-items-center">
+            <label for="eventDate" class="pe-2">Party Date:</label>
+            <input type="date" id="eventDate" class="form-control" required />
+          </div>
+          <div class="input-group mb-3 d-flex align-items-center">
+            <label for="eventStartTimeHour" class="pe-2">Party Start:</label>
+            <select class="form-select" id="eventStartTimeHour" required>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7" selected>7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+            </select>
+            <select class="form-select" id="eventStartTimeMinute" required>
+              <option value="00" selected>00</option>
+              <option value="15">15</option>
+              <option value="30">30</option>
+              <option value="45">45</option>
+            </select>
+            <select class="form-select" id="eventStartAMPM" required>
+              <option value="AM">AM</option>
+              <option value="PM" selected>PM</option>
+            </select>
+          </div>
+          <div class="input-group mb-3 d-flex align-items-center">
+            <label for="eventEndTimeHour" class="pe-3">Party End:</label>
+            <select class="form-select" id="eventEndTimeHour" required>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10" selected>10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+            </select>
+            <select class="form-select" id="eventEndTimeMinute" required>
+              <option value="00" selected>00</option>
+              <option value="15">15</option>
+              <option value="30">30</option>
+              <option value="45">45</option>
+            </select>
+            <select class="form-select" id="eventEndAMPM" required>
+              <option value="AM">AM</option>
+              <option value="PM" selected>PM</option>
+            </select>
+          </div>
+          <div class="d-flex flex-row gap-3 mb-3">
+            <select class="form-select" id="partyType" required>
+              <option value="Public">Public</option>
+              <option value="Private">Private</option>
+            </select>
+            <div class="d-flex align-items-center partyTypePopup">
+              <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20height='40px'%20viewBox='0%20-960%20960%20960'%20width='40px'%20fill='%23000000'%3e%3cpath%20d='M511.83-256.83Q524-269%20524-286.67q0-17.66-12.17-29.83-12.16-12.17-29.83-12.17-17.67%200-29.83%2012.17Q440-304.33%20440-286.67q0%2017.67%2012.17%2029.84%2012.16%2012.16%2029.83%2012.16%2017.67%200%2029.83-12.16Zm-65.16-136.5h64q0-28.34%206.83-49%206.83-20.67%2041.17-50.34%2029.33-26%2043-50.5%2013.66-24.5%2013.66-55.5%200-54-36.66-85.33-36.67-31.33-93.34-31.33-51.66%200-88.5%2026.33Q360-662.67%20344-620l57.33%2022q9-24.67%2029.5-42t52.5-17.33q33.34%200%2052.67%2018.16%2019.33%2018.17%2019.33%2044.5%200%2021.34-12.66%2040.17-12.67%2018.83-35.34%2037.83-34.66%2030.34-47.66%2054-13%2023.67-13%2069.34ZM480-80q-82.33%200-155.33-31.5-73-31.5-127.34-85.83Q143-251.67%20111.5-324.67T80-480q0-83%2031.5-156t85.83-127q54.34-54%20127.34-85.5T480-880q83%200%20156%2031.5T763-763q54%2054%2085.5%20127T880-480q0%2082.33-31.5%20155.33-31.5%2073-85.5%20127.34Q709-143%20636-111.5T480-80Zm0-66.67q139.33%200%20236.33-97.33t97-236q0-139.33-97-236.33t-236.33-97q-138.67%200-236%2097-97.33%2097-97.33%20236.33%200%20138.67%2097.33%20236%2097.33%2097.33%20236%2097.33ZM480-480Z'/%3e%3c/svg%3e" height="26px" />
+              <span class="partyTypePopupText"
+                >Public venue or a private residence?</span
+              >
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary w-100">
+            Create Event
+          </button>
+        </form>
+      </div>
+    </main>
+
+    <!-- footer goes here -->
+    <site-footer></site-footer>
+
+    <!---------------------------------------------->
+    <!-- Your own JavaScript functions go here    -->
+    <!---------------------------------------------->
+
+    <!-- Link to scripts of your own -->
+    <!-- <script type="module" src="/src/main.js"></script> -->
+  </body>
+</html>

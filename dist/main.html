@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>World Watch</title>
+    <meta name="comp1800 template" content="My 1800 App" />
+    <link rel="icon" type="image/x-icon" href="/assets/WWicon-EaGoDyNQ.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Web Components for shared navbar and footer layout -->
+
+    <!-- Other libraries go here -->
+    <script type="module" crossorigin src="/assets/main-BRgYwVPF.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/app-B_O6vh0-.js">
+    <link rel="modulepreload" crossorigin href="/assets/site-party-modal-CpghoEHH.js">
+    <link rel="modulepreload" crossorigin href="/assets/site-login-button-DYij8mxD.js">
+    <link rel="stylesheet" crossorigin href="/assets/app-Du6_jtVm.css">
+  </head>
+
+  <body>
+    <!------------------------------>
+    <!-- Your HTML Layout go here -->
+    <!------------------------------>
+
+    <!-- navbar goes here -->
+    <site-navbar></site-navbar>
+
+    <!-- Stuff for body goes here -->
+    <main class="bg-light">
+      <div
+        class="container bg-slate-300 text-dark p-5 mb-3"
+        style="
+          width: 100vw;
+          height: 700px;
+          background: url(/assets/pexels-semsibelli-26832707-Dtn5sMk_.jpg);
+        "
+      >
+        <div class="container p-5">
+          <h1 class="display-4 text-white p-3">
+            Ready to find the perfect watch party,
+            <span id="name-goes-here">friend</span>?
+          </h1>
+          <p class="display-6 text-white p-3">Watch your way!</p>
+          <div class="p-3">
+            <a class="btn btn-primary p-3" href="index.html"
+              >Find your perfect watch party >></a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="container m-5 bg-light rounded mx-auto">
+        <h1>Newest Watch parties</h1>
+        <div class="row flex-row flex-nowrap">
+          <div class="col-sm p-2">
+            <site-party-list-items></site-party-list-items>
+            <site-party-modal></site-party-modal>
+
+            <div
+              id="new-watch-parties"
+              id="main-carousel"
+              class="p-4 row flex-row flex-nowrap"
+              style="overflow: auto; white-space: nowrap"
+            ></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container m-5 bg-light rounded mx-auto">
+        <h1>Upcoming Watch parties</h1>
+        <div class="row flex-row flex-nowrap">
+          <div class="col-sm p-2">
+            <site-party-list-items></site-party-list-items>
+            <site-party-modal></site-party-modal>
+
+            <div
+              id="upcoming-watch-parties"
+              id="main-carousel"
+              class="p-4 row flex-row flex-nowrap"
+              style="overflow: auto; white-space: nowrap"
+            ></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- <site-login-button></site-login-button> -->
+    </main>
+
+    <!-- footer goes here -->
+    <footer class="container-fluid bg-light p-5">
+      <h2 class="row justify-content-center">Have Any Questions?</h2>
+      <div class="d-flex align-items-center justify-content-center">
+        <img
+          height="20px"
+          src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpngimg.com%2Fuploads%2Fphone%2Fphone_PNG48988.png&f=1&nofb=1&ipt=fa30e065acac9a59e4edb145aeef9d173ddba23f644bddeec3610f6ee652bd94"
+        />
+        <span class="p-2">604-777-777</span>
+      </div>
+      <div class="d-flex align-items-center justify-content-center">
+        <img
+          height="20px"
+          src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fvectorified.com%2Fimages%2Fblack-email-icon-png-6.png&f=1&nofb=1&ipt=3534663e70bac41d50629967e542268d3bfa93c1320353b6bc5690755164a168"
+        />
+        <span class="p-2">rigbycat@yahoo.com</span>
+      </div>
+      <br />
+    </footer>
+    <site-footer></site-footer>
+
+    <!---------------------------------------------->
+    <!-- Your own JavaScript functions go here    -->
+    <!---------------------------------------------->
+
+    <!-- Link to scripts of your own -->
+  </body>
+</html>

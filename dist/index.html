@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Browse - World Watch</title>
+    <meta name="comp1800 template" content="My 1800 App" />
+    <link rel="icon" type="image/x-icon" href="/assets/WWicon-EaGoDyNQ.png" />
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Web Components (src/components) -->
+
+    <!-- Other libraries go here -->
+    <script type="module" crossorigin src="/assets/index-BVkmO-6k.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/app-B_O6vh0-.js">
+    <link rel="modulepreload" crossorigin href="/assets/site-party-modal-CpghoEHH.js">
+    <link rel="modulepreload" crossorigin href="/assets/site-login-button-DYij8mxD.js">
+    <link rel="modulepreload" crossorigin href="/assets/site-filter-button-BXOk4u74.js">
+    <link rel="stylesheet" crossorigin href="/assets/app-Du6_jtVm.css">
+  </head>
+
+  <body>
+    <!------------------------------>
+    <!-- Your HTML Layout go here -->
+    <!------------------------------>
+
+    <!-- navbar goes here -->
+    <site-navbar></site-navbar>
+    <br>
+
+    <!-- Stuff for body goes here -->
+    <main>
+      <h1 class="p-4 pb-0" id="list_title">Watch Parties</h1>
+      <site-filter-button></site-filter-button>
+
+      <site-party-list-items></site-party-list-items>
+      <div id="watch-parties" class="p-4"></div>
+      
+      <site-party-modal></site-party-modal>
+    </main>
+
+    <!-- footer goes here -->
+    <site-footer></site-footer>
+
+    <!---------------------------------------------->
+    <!-- Your own JavaScript functions go here    -->
+    <!---------------------------------------------->
+
+    <!-- Link to scripts of your own -->
+  </body>
+</html>
