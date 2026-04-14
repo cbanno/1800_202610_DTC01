@@ -21,8 +21,8 @@ class SitePartyModal extends HTMLElement {
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <h3 id="modalHost"></h3>
-              <h4 id="modalTeams" class="fw-bold"></h4>
+              <h3 id="modalHost" class="fw-bold"></h3>
+              <h4 id="modalTeams"></h4>
               <p id="modalAddress"></p>
               <p id="modalTime"></p>
             </div>
