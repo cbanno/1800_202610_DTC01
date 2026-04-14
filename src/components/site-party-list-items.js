@@ -6,11 +6,11 @@ class SitePartyListItems extends HTMLElement {
         <div class="card mb-3 party-card-trigger mx-auto"
           style="cursor: pointer;" 
           data-bs-toggle="modal" 
-          data-bs-target="#partyModal">
+          data-bs-target="#partyModal" id="watch-party-item">
         <div class="card-body d-flex justify-content-between align-items-center gap-2">
 
           <!-- Left: host + address -->
-          <div class="d-flex flex-column" style="flex: 2; min-width: 0;">
+          <div class="d-flex flex-column" style="flex: 1; min-width: 0;">
             <div style="word-break: break-word; font-size: 1.1rem clamp(0.7rem, 2vw, 1rem);">
               <span class="host fw-semibold"></span>
             </div>
@@ -19,8 +19,8 @@ class SitePartyListItems extends HTMLElement {
           </div>
 
           <!-- Middle: teams + time -->
-          <div class="d-flex flex-column justify-content-center align-items-center text-center" style="flex: 1; min-width: 0;">
-            <div style="word-break: break-word; font-size: clamp(0.7rem, 2vw, 1rem);">
+          <div class="d-flex flex-column justify-content-center align-items-center text-center" style="min-width: 0;">
+            <div class="d-flex flex-column" style="word-break: break-word; font-size: clamp(0.7rem, 2vw, 1rem);">
               <span class="team1"></span> VS. <span class="team2"></span>
             </div>
             <span class="time small text-muted"></span>
