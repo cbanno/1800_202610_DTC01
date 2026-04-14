@@ -20,7 +20,7 @@ class SitePartyListItems extends HTMLElement {
 
           <!-- Middle: teams + time -->
           <div class="d-flex flex-column justify-content-center align-items-center text-center" style="flex: 1; min-width: 0;">
-            <div style="word-break: break-word; font-size: clamp(0.7rem, 2vw, 1rem);">
+            <div class="d-flex flex-column" style="font-size: 0.7rem;">
               <span class="team1"></span> VS. <span class="team2"></span>
             </div>
             <span class="time small text-muted"></span>
