@@ -27,7 +27,9 @@ Developed for the COMP 1800 course, this project applies User-Centred Design pra
 - **Build Tool**: [Vite](https://vitejs.dev/)
 - **Backend**: Firebase for hosting and authentication
 - **Database**: Firestore
-- **APIs**: [MapLibre GL JS](https://maplibre.org/maplibre-gl-js/docs/) for map implementation
+- **APIs**:
+  - [MapLibre GL JS](https://maplibre.org/maplibre-gl-js/docs/) for map implementation
+  - [Geoapify](https://www.geoapify.com/)
 - **Images**: [8-bit-football.com](https://8bit-football.com/)
 
 ---
