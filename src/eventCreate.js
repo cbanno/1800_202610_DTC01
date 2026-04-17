@@ -12,6 +12,7 @@ import { onAuthReady } from "./authentication.js";
 
 const GEOAPIFY_API_KEY = import.meta.env.VITE_GEOAPIFY_API_KEY;
 
+// Redirect user to login.html is there is no user logged in
 async function redirectNonLoggedIn() {
   
   onAuthReady(async (user) => {
@@ -27,6 +28,7 @@ async function redirectNonLoggedIn() {
 
 redirectNonLoggedIn()
 
+// Load the countries from the Firebase db and populate the dropdown boxes
 async function loadCountries() {
   const team1Dropdown = document.getElementById("team1");
   const team2Dropdown = document.getElementById("team2");
@@ -54,7 +56,9 @@ async function loadCountries() {
   }
 }
 
+// When the submit button is clicked, grab the form information and populate the Firebase db with a new watch party
 async function submitEvent(e) {
+  // This prevents the default behaviour of the submit button and allows the async function to process correctly
   e.preventDefault();
 
   let [lat, lng, formattedAddress] = await saveAddress();
@@ -107,6 +111,7 @@ async function submitEvent(e) {
   }
 }
 
+// If the address is correctly added, show a success message box
 function showAddressStatus(message, type = "success") {
   const statusEl = document.getElementById("addressStatus");
   statusEl.className = `alert alert-${type}`;
@@ -114,6 +119,7 @@ function showAddressStatus(message, type = "success") {
   statusEl.classList.remove("d-none");
 }
 
+// Handles the address input from the user, contacts the geoapify API, and reports success or failure
 async function saveAddress() {
   const user = auth.currentUser;
 
@@ -173,6 +179,7 @@ async function saveAddress() {
   }
 }
 
+// Shows the watch party help pop up
 function partyTypeHelp() {
   var popup = document.querySelector(".partyTypePopupText");
   popup.classList.toggle("show");
