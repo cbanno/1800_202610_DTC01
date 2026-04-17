@@ -1,20 +1,23 @@
-# World watch
-map install: npm i maplibre-gl
+# World Watch
 
 ## Overview
 
-Elmo Hikes is a client-side JavaScript web application that helps users discover and explore hiking trails. The app displays a curated list of hike trails, each with details such as name, location, difficulty, and an image. Users can browse the list and mark their favorite trails for easy access later.
+World Watch is a FIFA World Cup watch party app designed to help locals and tourists find places to watch World Cup matches with others by connecting them to available watch parties in their area.
 
-Developed for the COMP 1800 course, this project applies User-Centred Design practices and agile project management, and demonstrates integration with Firebase backend services for storing user favorites.
+Developed for the COMP 1800 course, this project applies User-Centred Design practices and agile project management, and demonstrates integration with Firebase backend services for storing user-created watch parties.
 
 ---
 
 ## Features
 
-- Browse a list of curated hiking trails with images and details
-- Mark and unmark trails as favorites
-- View a personalized list of favorite hikes
-- Responsive design for desktop and mobile
+- Public and private watch parties
+  - Users can find local businesses that are hosting watch parties, or create their own private party
+- Filter watch parties
+  - Users can filter the watch parties by team/country name
+- Watch Party Map
+  - Map shows location of user watch parties and party type
+- User Accounts
+  - Users can update account details and see the watch parties they have created on their account page
 
 ---
 
@@ -22,8 +25,10 @@ Developed for the COMP 1800 course, this project applies User-Centred Design pra
 
 - **Frontend**: HTML, CSS, JavaScript
 - **Build Tool**: [Vite](https://vitejs.dev/)
-- **Backend**: Firebase for hosting
+- **Backend**: Firebase for hosting and authentication
 - **Database**: Firestore
+- **APIs**: [MapLibre GL JS](https://maplibre.org/maplibre-gl-js/docs/) for map implementation
+- **Images**: [8-bit-football.com](https://8bit-football.com/)
 
 ---
 
@@ -38,25 +43,49 @@ To run the application locally:
 
 Once the application is running:
 
-1. Browse the list of hiking trails displayed on the main page.
-2. Click the heart icon (or similar) to mark a trail as a favorite.
-3. View your favorite hikes in the favorites section.
+1. Browse the list of watch parties displayed on the index page.
+2. Filter the watch parties by team.
+3. Click a watch party to see its details.
+4. Create a user account to create your own watch parties.
+5. View the map to see private and public watch parties available in your area.
 
 ---
 
 ## Project Structure
 
 ```
-elmo-hikes/
+1800_202610_DTC01/
+├── components/
+│   ├── site-footer.js
+│   ├── site-login-button.js
+│   ├── site-map.js
+│   ├── site-navbar.js
+│   ├── site-party-list-items.js
+│   ├── site-party-modal.js
 ├── src/
+│   ├── app.js
+│   ├── authentication.js
+│   ├── eventCreate.js
+│   ├── firebaseConfig.js
+│   ├── landing-main.js
+│   ├── loginSignup.js
 │   ├── main.js
+│   ├── map.js
+│   ├── profile.js
 ├── styles/
 │   └── style.css
 ├── public/
 ├── images/
+├── account.html
+├── event-form.html
 ├── index.html
+├── login.html
+├── main.html
+├── index.html
+├── map.html
 ├── package.json
 ├── README.md
+├── vite-config.js
 ```
 
 ---
@@ -69,14 +98,13 @@ elmo-hikes/
 
 - **Chris Banno** - BCIT CST Student with a passion for outdoor adventures and user-friendly applications. Fun fact: Loves snowboarding and working on cars.
 
-
 ---
 
 ## Acknowledgments
 
-- Trail data and images are for demonstration purposes only.
+- Watch party data is for demonstration purposes only.
 - Code snippets were adapted from resources such as [Stack Overflow](https://stackoverflow.com/) and [MDN Web Docs](https://developer.mozilla.org/).
-- Icons sourced from [FontAwesome](https://fontawesome.com/) and images from [Unsplash](https://unsplash.com/).
+- Icons sourced from [Material Symbols & Icons](https://fonts.google.com/icons)
 
 ---
 
@@ -84,13 +112,14 @@ elmo-hikes/
 
 ### Limitations
 
-- Limited trail details (e.g., no live trail conditions).
+- Watch party and matches are for demo purposes only.
 - Accessibility features can be further improved.
 
 ### Future Work
 
-- Implement map view and trailhead directions.
-- Add filtering and sorting options (e.g., by difficulty, distance).
+- Add more filtering and sorting options (e.g., by distance).
+- Add search functionality
+- Add clickable map to each watch party card
 - Create a dark mode for better usability in low-light conditions.
 
 ---
